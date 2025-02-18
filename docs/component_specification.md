@@ -1,6 +1,6 @@
 # Software Components
 
-### <ins>**Embedding model**</ins>
+### <ins>**Embedding Model:**</ins>
 #### **What it does:**
 * Determines how to plot the cancer data into a map of cancer transcriptomics by translating the embedding data frame it is provided into coordinates for the embedding plotter
 #### **Inputs:**
@@ -10,7 +10,7 @@
 #### **Assumptions:**
 * These is an embedding data frame available to pull data from
   
-### <ins>**Embedding plotter**</ins>
+### <ins>**Embedding Plotter:**</ins>
 #### **What it does:**
 * Displays the mapped data points based on the calculations from the embedding model
 * Can display different data based on what is selected in the filtering panel
@@ -23,7 +23,7 @@
 * The embedding model has translated the embedding data frame into a set of coordinates
 * The filtering panel has been selected (or no filter is applied) so it knows how to filter the data before displaying it
 
-### <ins>**Filtering Panel**</ins>
+### <ins>**Filtering Panel:**</ins>
 #### **What it does:**
 * Displays filtering options and takes user input for how to filter the data that is displayed by the embedding plotter
 #### **Inputs:**
@@ -36,7 +36,7 @@
 * The user has selected from the filtering options
 * There is a view controller to communicate with and send the filter selections to
 
-## **Additional components:**
+## **Additional Components:**
 * Embedding data frame - contains all data from the studies
 * View controller - interacts with the embedding data frame to determine which subset of the data (ex. Type of cancer) will be used and also get filter information from the user selections in the filtering panel and communicates with the embedding plotter and/or embedding data frame to determine what should be displayed
 * Data selector panel - determines which subset of the data should be used in the model/display (ex. Type of cancer)
