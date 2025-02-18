@@ -60,9 +60,9 @@ The data scientist would keep the cancer transcription app running and respond t
 ### Use Case: Data Scientist maintaining the app
 
 * User:
--- Be able to access the backend of the app
--- Be able to update the model with new data
--- Be able to push this new version of the app to users
--- Be able to fix bugs that are reported in the app
--- Be able to add new datasets
+	* Be able to access the backend of the app
+	* Be able to update the model with new data
+	* Be able to push this new version of the app to users
+	* Be able to fix bugs that are reported in the app
+	* Be able to add new datasets
 
