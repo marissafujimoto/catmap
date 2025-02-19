@@ -23,9 +23,9 @@ One user would be the doctors who are working with patients who have cancer. Doc
 
 Public Health includes policymakers, researchers, etc who are trying to understand cancer at a population level. Their goal is to characterize cancer in populations using gene expression data and stratify it by demographics and health outcomes. They would want to use catmap to visualize reference databases and also compare them to their other datasets. An example question they might answer might be “Does cancer expression vary significantly between lower-income and wealthier individuals?” They need to be able to view the data holistically and export it between software and upload bulk populations. They might also want to use catmap to produce visualizations of newly gathered sample data. We assume they have proficient biology, statistics, and programming skills.
 
-### Data Scientist
+### Maintainer
 
-The data scientist would keep the cancer transcription app running and respond to bug reports. They would need to update the model based on new data to improve accuracy. They would be highly proficient in programming skills and data science.
+The maintainer would keep the cancer transcription app running and respond to bug reports. They would need to update the model based on new data to improve accuracy. They would be highly proficient in programming skills and data science.
 
 ## Use Cases
 
