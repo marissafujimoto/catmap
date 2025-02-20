@@ -4,9 +4,9 @@
 #### **What it does:**
 * Determines how to plot the cancer data into a map of cancer transcriptomics by translating the embedding data frame it is provided into coordinates for the embedding plotter
 #### **Inputs:**
-* Data from the embedding dataframe
+* Raw gene expression values from the embedding dataframe
 #### **Outputs:**
-* Data mapped to coordinates for the embedding plotter to plot
+* Embedding coordinates
 #### **Assumptions:**
 * These is an embedding data frame available to pull data from
   
@@ -27,11 +27,10 @@
 #### **What it does:**
 * Displays filtering options and takes user input for how to filter the data that is displayed by the embedding plotter
 #### **Inputs:**
-* Age, numeric
-* Gender, string
-* Race, string
+* Some categorical or numerical metadata column (ex. Age (numeric), Gender (string), Race (string))
 #### **Outputs:**
-* A list containing the filter information that was selected to give to the view controller
+* A list containing the filter information that was selected
+* Also causes UI change in the plot based on filter selections
 #### **Assumptions:**
 * The user has selected from the filtering options
 * There is a view controller to communicate with and send the filter selections to
