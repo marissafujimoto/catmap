@@ -1,58 +1,65 @@
 **Milestones:**
 
-1.  Get access to data
+1.  Manipulate/filter data to better understand it. Make sure we understand annotations
 
-2.  Download from the study webpage
+2.  Start modeling for this dataset
 
-3.  Confirm that we can pull the data into python
+3.  Demonstrate embedding models and test different ones
 
-4.  Manipulate/filter data to better understand it
+4.  Create basic plots to view the embedding
 
-5.  Demonstrate embedding models and test different ones
+5.  Finalize the model
 
-6.  Start with single dataset - non-small cell lung cancer
-
-7.  Build model for this dataset
-
-8.  Create basic plots to view the embedding
-
-9.  Create a UI for the app Framework comparisons, see what fits the
+6.  Create a UI for the app Framework comparisons, see what fits the
     data best and looks most visually appealing
 
-10. Demonstrate that we can plot points in the UI (sanity test that all
+7.  Demonstrate that we can plot points in the UI (sanity test that all
     features are working)
 
-11. Create a polished version of the plotted embedding
+8.  UI integrate with our own model. UI filters demonstrated
 
-12. Test how well we can predict the mapping for a single user based on existing data
+9.  Create a polished version of the plotted embedding
+
+10. Test how well we can predict the mapping for a single user based on existing data
 
 **Timeline (4 weeks (5-10 hours a week per person)):**
 
-Feb 20th:
+Feb 20th week:
 
--   Understand our data: what are it’s dimensions / annotations.
+-   Manipulate/filter data to better understand it
 
 -   Make sure we feel good about additional annotations (more than just
     patient label)
 
--   IDE setup (vscode / colab) (we all know how to make a PR at this
-    point)
+-   Demonstrate embedding models and test different ones. Create basic plots to view the embeddings
 
 -   Start the ML model. (at least environment setup / ran through some
     examples) UI Framework: pick which ones to explore (tentatively)
 
-Feb 27th
+Feb 27th week:
+
+-   Finalize the model. Run ML on our own data.
 
 -   POCs for UI (technology review milestone)
 
--   Run ML on our own data.
+-   Create a UI for the app Framework comparisons, see what fits the
+    data best and looks most visually appealing
 
-Mar 6th:
+-   Demonstrate that we can plot points in the UI (sanity test that all
+    features are working)
+
+Mar 6th week:
 
 -   UI integrate with our own model. UI filters demonstrated
+  
+-   Create a polished version of the plotted embedding
+
+-   Test how well we can predict the mapping for a single user based on existing data
 
 Mar 13th:
 
 -   Users tests
+
+-   Turn in final project
 
 -   Upload new samples to model UI upload flow
