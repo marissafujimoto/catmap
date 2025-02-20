@@ -7,7 +7,7 @@
 
 ## Data
 
-TODO Erik
+Our data is from the research paper, “An integrated single-cell transcriptomic dataset for non-small cell lung cancer”  https://www.nature.com/articles/s41597-023-02074-6. The main dataset we are using has 224,611 rows each corresponding to cells from human primary non-small cell lung cancer (NSCLC) tumors. It has data on the RNA of the cell, what stage the cancer is in, the patient, and the cell cluster levels. Also in the dataset we have a sparse matrix of gene expressions from the RNA sequence. These are more difficult to work with because each cell has 72,131 columns of gene expression with many of them being 0. Finally we have PCA and UMAP dimensionality reduction matrices which will be useful in creating our own dimensionality reduction.
 
 ## User Stories
 
