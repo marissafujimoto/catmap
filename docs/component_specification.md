@@ -30,14 +30,13 @@
 * Some categorical or numerical metadata column (ex. Age (numeric), Gender (string), Race (string))
 #### **Outputs:**
 * A list containing the filter information that was selected
-* Also causes UI change in the plot based on filter selections
 #### **Assumptions:**
 * The user has selected from the filtering options
 * There is a view controller to communicate with and send the filter selections to
 
 ## **Additional Components:**
 * Embedding data frame - contains all data from the studies
-* View controller - interacts with the embedding data frame to determine which subset of the data (ex. Type of cancer) will be used and also get filter information from the user selections in the filtering panel and communicates with the embedding plotter and/or embedding data frame to determine what should be displayed
+* View controller - interacts with the embedding data frame to determine which subset of the data (ex. Type of cancer) will be used and also get filter information from the user selections in the filtering panel and communicates with the embedding plotter and/or embedding data frame to determine what should be displayed. This affects the UI directly and changes which data is displayed by the embedding plotter.
 * Data selector panel - determines which subset of the data should be used in the model/display (ex. Type of cancer)
 
 # Interactions
