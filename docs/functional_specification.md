@@ -57,7 +57,7 @@ The maintainer would keep the cancer transcription app running and respond to bu
 * User: Select their cancer screening
 * System: Display a point on the map corresponding to their result
 
-### Use Case: Data Scientist maintaining the app
+### Use Case: Maintainer maintaining the app
 
 * User:
 	* Be able to access the backend of the app
