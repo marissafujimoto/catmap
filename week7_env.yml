@@ -1,4 +1,4 @@
-name: week7_newenv
+name: catmap_env
 channels:
   - defaults
 dependencies:
