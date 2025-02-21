@@ -1,0 +1,10 @@
+name: week7_newenv
+channels:
+  - defaults
+dependencies:
+  - jupyter=1
+  - notebook=7
+  - python=3.8
+  - pip
+  - pip:
+    - -r requirements.txt
