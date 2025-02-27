@@ -39,7 +39,9 @@ In the end, given that we have only a few weeks to complete this project and do 
 # Drawbacks/Concerns
 At this stage in our development, one concern we have is that we may run into an aspect of the application/visualization that we would like to customize more, but will be unable to do so with Streamlit's limited customization options. However, we hope that we will be able to creatively work around these possibie limitations since we are the main stakeholders of the project and do not have to meet the specific needs of external customers. Another possible drawback is that Streamlit may update/display data a bit slower than Dash. We were able to test the plotting speed with the same number of data points (>200,000) that we expect to have in the final plot and didn't have any runtime issues there, but we don't know for sure how it will work with our true dataset yet. 
 
+# Streamlit Demo Screen Video
 
+https://drive.google.com/file/d/12EuSR_X1wtvmjDqVJwNmXnx3jofNzHKo/view?usp=drive_link
 
 
 
