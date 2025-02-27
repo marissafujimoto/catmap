@@ -5,6 +5,10 @@ dependencies:
   - jupyter=1
   - notebook=7
   - python>=3.9
+  - streamlit=1.42
+  - plotly=6
+  - numpy=2.2
+  - pandas=2.2
   - pip
   - pip:
     - -r requirements.txt
