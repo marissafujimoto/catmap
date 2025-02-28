@@ -39,3 +39,25 @@ https://www.nature.com/articles/s41597-023-02074-6
 
 https://pmc.ncbi.nlm.nih.gov/articles/PMC9896021/
 
+## Usage Instructions
+
+To build catmap from source
+
+Install dependencies (requires conda)
+
+```
+conda env create -f environment.yml
+```
+
+Install catmap from source
+
+```
+cd catmap
+pip install .
+```
+
+Launch catmap
+
+```
+catmap
+```
