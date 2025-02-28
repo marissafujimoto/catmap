@@ -1,3 +1,4 @@
+"""Module for the catmap streamlit application."""
 import streamlit as st
 
 from catmap.ui.component.header import Header
@@ -6,6 +7,7 @@ from catmap.ui.component.select_type_dropdown import SelectTypeDropdown
 
 
 def start():
+    """Sets up the components and initializes the state."""
     _initialize_state()
 
     Header().build(st)
