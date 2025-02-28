@@ -28,6 +28,8 @@ class EmbeddingPlotter(AbstractUIComponent):
 
         df = pd.DataFrame({'x': x, 'y': y, 'type': type})
 
+        df = df[df["type"].isin(st.session_state.selected_filters)]
+
         # Plot figure based on selection
         fig = px.scatter(df, x="x", y="y", color="type")
         parent.plotly_chart(fig)
