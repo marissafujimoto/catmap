@@ -1,6 +1,7 @@
 name: catmap_env
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - jupyter=1
   - notebook=7
