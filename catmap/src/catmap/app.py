@@ -1,3 +1,4 @@
+"""Module for the catmap streamlit application."""
 import streamlit as st
 import pandas as pd
 
@@ -7,6 +8,7 @@ from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 
 
 def start():
+    """Sets up the components and initializes the state."""
     _initialize_state()
 
     Header().build(st)
