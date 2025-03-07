@@ -21,6 +21,13 @@ classifiers = [
 ]
 dynamic = ["dependencies"]
 
+[project.scripts]
+catmap = "catmap.launcher:main"
+
+[tool.setuptools]
+package-dir = {"catmap" = "catmap/src/catmap"}
+packages = ["catmap"]
+
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 

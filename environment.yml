@@ -12,5 +12,4 @@ dependencies:
   - pandas=2.2
   - pylint=3.3.3
   - pip
-  - pip:
-    - -r requirements.txt
+  - build
