@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "catmap"
+version = "0.0.1"
+authors = [
+  { name="Marissa Fujimoto" },
+  { name="Alyssa Mell" },
+  { name="Vaishnavi Verma" },
+  { name="Erik Pedersen" },
+]
+description = "A python based map of cancer transciptomics"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[project.urls]
+Homepage = "https://github.com/marissafujimoto/catmap"
+Issues = "https://github.com/marissafujimoto/catmap/issues"
