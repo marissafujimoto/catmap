@@ -11,5 +11,5 @@ dependencies:
   - numpy=2.2
   - pandas=2.2
   - pylint=3.3.3
+  - build=0.10.0
   - pip
-  - build
