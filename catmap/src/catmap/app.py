@@ -26,7 +26,11 @@ def start():
 
 
 def _initialize_state():
-    st.session_state.df = pd.read_csv('umap_coordinates_labels_all.csv')
+    import os
+    print('hi')
+    print(os.getcwd())
+    print('not hi')
+    st.session_state.df = pd.read_csv(r'../data/umap_coordinates_labels_all.csv')
     columns = st.session_state.df.columns.tolist()
     columns.remove('UMAP1')
     columns.remove('UMAP2')
