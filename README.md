@@ -52,7 +52,6 @@ conda env create -f environment.yml
 Install catmap from source
 
 ```
-cd catmap
 pip install .
 ```
 
