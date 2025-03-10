@@ -1,4 +1,5 @@
 """Module for the catmap streamlit application."""
+import importlib
 import os
 from pathlib import Path
 
@@ -16,25 +17,33 @@ def start():
 
     Header().build(st)
 
-    select_column_dropdown = SelectColumnDropdown()
-    embedding_plotter = EmbeddingPlotter()
+    if st.session_state.current_page == "home":
+        st.write("Navigate to other pages:")
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            if st.button("Go to Page 1"):
+                st.session_state.current_page = "page_1"
+                st.rerun()
 
-    left_column, right_column = st.columns(2)
+        with col2:
+            if st.button("Go to Page 2"):
+                st.session_state.current_page = "page_2"
+                st.rerun()
 
-    with left_column:
-        select_column_dropdown.build(left_column)
+    elif st.session_state.current_page == "page_1":
+        page_1 = importlib.import_module("ui.pages.page1")
+        page_1.show()
 
-    with right_column:
-        embedding_plotter.build(right_column)
+    elif st.session_state.current_page == "page_2":
+        page_2 = importlib.import_module("ui.pages.page2")
+        page_2.show()
+
 
 
 def _initialize_state():
-    st.session_state.df = pd.read_csv(
-        os.path.join(Path(__file__).resolve().parent, "data/umap_coordinates_labels_all.csv"))
-    columns = st.session_state.df.columns.tolist()
-    columns.remove('UMAP1')
-    columns.remove('UMAP2')
-    st.session_state.column_options = columns
-    st.session_state.selected_column = columns[0]
-
+    if "current_page" not in st.session_state:
+        st.session_state.current_page = "home" 
+    
 start()
+
