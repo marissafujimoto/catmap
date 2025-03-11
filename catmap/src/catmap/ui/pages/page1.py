@@ -17,15 +17,10 @@ def show():
     #Header().build(st)
 
     select_column_dropdown = SelectColumnDropdown()
+    select_column_dropdown.build(st)
+    st.write("---")  
     embedding_plotter = EmbeddingPlotter()
-
-    left_column, right_column = st.columns(2)
-
-    with left_column:
-        select_column_dropdown.build(left_column)
-
-    with right_column:
-        embedding_plotter.build(right_column)
+    embedding_plotter.build(st)
     
     if st.button("Back to Home"):
         st.session_state.current_page = "home"
