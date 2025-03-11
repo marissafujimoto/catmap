@@ -18,7 +18,6 @@ def show():
 
     select_column_dropdown = SelectColumnDropdown()
     select_column_dropdown.build(st)
-    st.write("---")  
     embedding_plotter = EmbeddingPlotter()
     embedding_plotter.build(st)
     
