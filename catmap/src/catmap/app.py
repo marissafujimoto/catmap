@@ -8,7 +8,8 @@ import pandas as pd
 from catmap.ui.component.header import Header
 from catmap.ui.component.embedding_plotter import EmbeddingPlotter
 from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
-from catmap.ui.pages import page1, page2
+from catmap.ui.component.page_1 import Page1
+from catmap.ui.component.page_2 import Page2
 
 
 def start():
@@ -33,15 +34,31 @@ def start():
                 st.rerun()
 
     elif st.session_state.current_page == "page_1":
-        page1.show()
+        nsclc_page = Page1()
+        nsclc_page.build(st)
 
     elif st.session_state.current_page == "page_2":
-        page2.show()
+        other_page = Page1()
+        other_page.build(st)
 
 
 def _initialize_state():
     if "current_page" not in st.session_state:
         st.session_state.current_page = "home"
+
+    csv_path = os.path.join(
+        Path(__file__).resolve().parent,
+        "data",
+        "umap_coordinates_labels_all.csv")
+    st.session_state.df = pd.read_csv(csv_path)
+    columns = st.session_state.df.columns.tolist()
+    columns.remove('UMAP1')
+    columns.remove('UMAP2')
+    st.session_state.column_options = columns
+    st.session_state.selected_column = columns[0]
+
+    if 'button' not in st.session_state:
+        st.session_state.button = False
 
 
 start()
