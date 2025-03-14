@@ -9,6 +9,7 @@ from catmap.ui.component.embedding_plotter import EmbeddingPlotter
 from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.abstract_component import AbstractUIComponent
 from catmap.ui.component.info_button import InfoButton
+from catmap.ui.component.return_home_button import ReturnHomeButton
 
 
 class Page1(AbstractUIComponent):
@@ -21,13 +22,13 @@ class Page1(AbstractUIComponent):
             select_column_dropdown.build(parent)
 
         with col2:
-            button = InfoButton()
-            button.build(parent)
+            info_button = InfoButton()
+            info_button.build(parent)
 
         embedding_plotter = EmbeddingPlotter()
         embedding_plotter.build(parent)
         with parent.expander("About this dashboard"):
             parent.write("This dashboard provides insights into catmap data.")
 
-        if parent.button("Back to Home"):
-            st.session_state.current_page = "home"
+        home_button = ReturnHomeButton()
+        home_button.build(parent)
