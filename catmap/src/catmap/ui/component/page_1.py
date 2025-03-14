@@ -8,6 +8,7 @@ from streamlit.delta_generator import DeltaGenerator
 from catmap.ui.component.embedding_plotter import EmbeddingPlotter
 from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.abstract_component import AbstractUIComponent
+from catmap.ui.component.info_button import InfoButton
 
 
 class Page1(AbstractUIComponent):
@@ -20,13 +21,8 @@ class Page1(AbstractUIComponent):
             select_column_dropdown.build(parent)
 
         with col2:
-            def click_button():
-                st.session_state.button = not st.session_state.button
-
-            col2.button(":information_source:", on_click=click_button)
-
-            if st.session_state.button:
-                st.info("Different categories correspond to different clustering.")
+            button = InfoButton()
+            button.build(parent)
 
         embedding_plotter = EmbeddingPlotter()
         embedding_plotter.build(parent)
