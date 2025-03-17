@@ -8,6 +8,7 @@ import pandas as pd
 from catmap.ui.component.header import Header
 from catmap.ui.component.embedding_plotter import EmbeddingPlotter
 from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
+from catmap.io.model_loader import load_nsclc_embedding_model
 
 
 def start():
@@ -36,5 +37,7 @@ def _initialize_state():
     columns.remove('UMAP2')
     st.session_state.column_options = columns
     st.session_state.selected_column = columns[0]
+
+    load_nsclc_embedding_model()
 
 start()
