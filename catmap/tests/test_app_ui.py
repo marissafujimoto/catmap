@@ -1,15 +1,16 @@
+"""Module for UI app testing."""
+
 import pytest # type: ignore
 from streamlit.testing.v1 import AppTest
 
+# pylint: disable=redefined-outer-name
 @pytest.fixture
 def app_ui_test():
     """Fixture to initialize the app test instance."""
     app = AppTest.from_file("../src/catmap/app.py").run()
-    
     # Explicitly set session state if missing
     if "current_page" not in app.session_state:
         app.session_state["current_page"] = "home"
-    
     return app
 
 def test_page_one_button_click(app_ui_test):
@@ -30,7 +31,8 @@ def test_return_to_home_from_page_one(app_ui_test):
     app_ui_test.button[0].click().run()
     assert app_ui_test.session_state.current_page == "page_1" # After click, move to page 2
     app_ui_test.button[1].click().run()
-    assert app_ui_test.session_state.current_page == "home" # After click one page 2, return to home
+    assert app_ui_test.session_state.current_page == "home"
+    # After click one page 2, return to home
 
 def test_return_to_home_from_page_two(app_ui_test):
     """A user clicks to go back to home from page 1."""
@@ -38,7 +40,8 @@ def test_return_to_home_from_page_two(app_ui_test):
     app_ui_test.button[1].click().run()
     assert app_ui_test.session_state.current_page == "page_2" # After click, move to page 2
     app_ui_test.button[1].click().run()
-    assert app_ui_test.session_state.current_page == "home" # After click one page 2, return to home
+    assert app_ui_test.session_state.current_page == "home"
+    # After click one page 2, return to home
 
 def test_open_close_info_button_page_one(app_ui_test):
     """A user clicks on the info button on page 1 to open and close it."""
