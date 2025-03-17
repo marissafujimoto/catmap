@@ -13,3 +13,4 @@ dependencies:
   - pylint=3.3.3
   - python-build=1.2.2
   - pip
+  - pytest=8.3
