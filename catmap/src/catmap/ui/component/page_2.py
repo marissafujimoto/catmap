@@ -17,7 +17,8 @@ class Page2(AbstractUIComponent):
         col1, col2 = parent.columns([6, 2])
 
         with col1:
-            select_column_dropdown = SelectColumnDropdown()
+            select_column_dropdown = SelectColumnDropdown(
+                st.session_state.column_options_colon, "selected_column_colon")
             select_column_dropdown.build(parent)
 
         with col2:
