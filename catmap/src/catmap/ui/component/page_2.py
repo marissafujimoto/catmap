@@ -29,6 +29,7 @@ class Page2(AbstractUIComponent):
             st.session_state.df_colon, st.session_state.selected_column_colon, "X", "Y")
         embedding_plotter.build(parent)
         with parent.expander("About this dashboard"):
+            # TODO: write a more informative summary of the data
             st.write("This dashboard provides insights into catmap data.")
 
         home_button = ReturnHomeButton()

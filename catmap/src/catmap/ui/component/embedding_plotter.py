@@ -8,9 +8,21 @@ from catmap.ui.component.abstract_component import AbstractUIComponent
 
 
 class EmbeddingPlotter(AbstractUIComponent):  # pylint: disable=too-few-public-methods
-    """Class to fill the embedding plotter window."""
+    """A UI component for visualizing embedding data using a scatter plot.
+
+    This class generates a scatter plot using Plotly, where the points
+    are colored based on a specified column in the DataFrame.
+    """
 
     def __init__(self, df, column, xlab, ylab):
+        """Initializes the EmbeddingPlotter
+
+        Args:
+            df (pd. DataFrame): The DataFrame containing the embedding data.
+            column (str): The column name used for coloring the points.
+            xlab (str): The column name to be used for the x-axis.
+            ylab (str): The column name to be used for the y-axis.
+        """
         self.df = df
         self.column = column
         self.xlab = xlab
