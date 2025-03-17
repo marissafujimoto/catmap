@@ -10,6 +10,7 @@ from catmap.ui.component.abstract_component import AbstractUIComponent
 from catmap.ui.component.info_button import InfoButton
 from catmap.ui.component.return_home_button import ReturnHomeButton
 
+
 class Page2(AbstractUIComponent):
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """Sets up the components and initializes the state."""
@@ -23,7 +24,8 @@ class Page2(AbstractUIComponent):
             info_button = InfoButton()
             info_button.build(parent)
 
-        embedding_plotter = EmbeddingPlotter()
+        embedding_plotter = EmbeddingPlotter(
+            st.session_state.df_colon, st.session_state.selected_column_colon, "X", "Y")
         embedding_plotter.build(parent)
         with parent.expander("About this dashboard"):
             st.write("This dashboard provides insights into catmap data.")

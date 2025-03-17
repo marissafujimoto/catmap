@@ -24,7 +24,8 @@ class Page1(AbstractUIComponent):
             info_button = InfoButton()
             info_button.build(parent)
 
-        embedding_plotter = EmbeddingPlotter(st.session_state.df, st.session_state.selected_column, "UMAP1", "UMAP2")
+        embedding_plotter = EmbeddingPlotter(
+            st.session_state.df_nsclc, st.session_state.selected_column_nsclc, "UMAP1", "UMAP2")
         embedding_plotter.build(parent)
         with parent.expander("About this dashboard"):
             parent.write("This dashboard provides insights into catmap data.")
