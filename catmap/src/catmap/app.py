@@ -38,7 +38,7 @@ def start():
         nsclc_page.build(st)
 
     elif st.session_state.current_page == "page_2":
-        other_page = Page1()
+        other_page = Page2()
         other_page.build(st)
 
 
