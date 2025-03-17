@@ -1,4 +1,5 @@
 """Module for app testing."""
+
 from streamlit.testing.v1 import AppTest
 
 
@@ -39,22 +40,24 @@ def test_open_close_info_button_page_one():
     at = AppTest.from_file("../src/catmap/app.py").run()
     at.button[0].click().run() # move to page 1
     assert at.session_state.current_page == "page_1" # After click, move to page 1
-    assert not at.info # info is not displayed 
+    assert not at.info # info is not displayed
     at.button[0].click().run() # click info button
-    assert at.info[0].value == "Different categories correspond to different clustering." # info line is displayed
-    at.button[0].click().run() # click info button again 
-    assert not at.info # info is not displayed 
+    assert at.info[0].value == "Different categories correspond to different clustering."
+    # info line is displayed
+    at.button[0].click().run() # click info button again
+    assert not at.info # info is not displayed
 
 def test_open_close_info_button_page_two():
     """A user clicks on the info button on page 1 to open and close it."""
     at = AppTest.from_file("../src/catmap/app.py").run()
     at.button[1].click().run() # move to page 2
     assert at.session_state.current_page == "page_2" # After click, move to page 1
-    assert not at.info # info is not displayed 
+    assert not at.info # info is not displayed
     at.button[0].click().run() # click info button
-    assert at.info[0].value == "Different categories correspond to different clustering." # info line is displayed
-    at.button[0].click().run() # click info button again 
-    assert not at.info # info is not displayed 
+    assert at.info[0].value == "Different categories correspond to different clustering."
+    # info line is displayed
+    at.button[0].click().run() # click info button again
+    assert not at.info # info is not displayed
 
 def test_expander_label_page_one():
     """A user clicks on the info button on page 1 to open and close it."""
@@ -87,4 +90,3 @@ def test_selectbox_dropdown_page_two():
     assert at.selectbox[0].label == "Column"
     assert at.selectbox[0].options == at.session_state.column_options
     assert at.selectbox[0].index == 0
-    
