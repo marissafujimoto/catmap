@@ -101,7 +101,6 @@ pyproject_hooks==1.0.0
 PyQt6==6.7.1
 PyQt6_sip==13.9.1
 PySocks==1.7.1
-pytest==8.3.5
 python-dateutil==2.9.0.post0
 python-json-logger==3.2.1
 pytz==2024.1
@@ -144,3 +143,4 @@ websocket-client==1.8.0
 wheel==0.45.1
 widgetsnbextension==3.5.1
 zipp==3.21.0
+pytest==8.3.5
