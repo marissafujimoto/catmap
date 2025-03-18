@@ -19,6 +19,12 @@ class EmbedResultsPage(AbstractUIComponent):
         with col1:
             uploaded_file = parent.file_uploader(
                 "Select h5ad File", accept_multiple_files=False)
+
+            if uploaded_file and "h5ad" != uploaded_file.name[-4:]:
+                col1.error(
+                    f"Uploaded file {uploaded_file.name} is not a h5ad file")
+
+                uploaded_file = None
         with col2:
             pass
 
