@@ -41,3 +41,14 @@ class TestModelLoader(unittest.TestCase):  # pylint: disable=missing-class-docst
         rfc = model_loader.load_rfc_cell_type_classifier()
         self.assertIsNotNone(rfc)
         self.assertIsInstance(rfc, RandomForestClassifier)
+
+    def test_embed_nsclc_data(self):
+        embed_df = model_loader.embed_nsclc_data(TEST_ADATA_PATH)
+
+        self.assertIn("UMAP1", embed_df)
+        self.assertIn("UMAP2", embed_df)
+        self.assertIn("Predicted Cell Type", embed_df)
+
+    def test_embed_nsclc_data_invalid_path(self):
+        with self.assertRaises(ValueError):
+            model_loader.embed_nsclc_data("another-invalid-path.h5ad")
