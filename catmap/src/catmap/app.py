@@ -1,16 +1,19 @@
 """Module for the catmap streamlit application."""
 import os
+import sys
 from pathlib import Path
 
 import streamlit as st
 import pandas as pd
 
+#pylint: disable ='unused-import'
 from catmap.ui.component.header import Header
 from catmap.ui.component.embedding_plotter import EmbeddingPlotter
 from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.page_1 import Page1
 from catmap.ui.component.page_2 import Page2
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 def start():
     """Sets up the components and initializes the state."""
@@ -19,7 +22,9 @@ def start():
     Header().build(st)
 
     if st.session_state.current_page == "home":
+        #pylint: disable ='fixme'
         # TODO extract to home page component
+        #pylint: enable ='fixme'
         st.write("Navigate to other pages:")
         col1, col2 = st.columns(2)
 
