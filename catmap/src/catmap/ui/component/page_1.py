@@ -27,10 +27,16 @@ class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
             nsclc_info_button = InfoButton()
             nsclc_info_button.build(parent)
 
+        caption_text = st.session_state.nsclc_caption_dict[st.session_state.selected_column_nsclc]
+        st.caption(caption_text)
+
         embedding_plotter = EmbeddingPlotter(
             st.session_state.df_nsclc, st.session_state.selected_column_nsclc, "UMAP1", "UMAP2")
         embedding_plotter.build(parent)
-        with parent.expander("About this dashboard"):
+        with parent.expander("Visualization Overview"):
+            # TODO: write a more informative summary of the data
+            parent.write("This dashboard provides insights into NSCLC data.")
+        with parent.expander("Data Overview"):
             # TODO: write a more informative summary of the data
             parent.write("This dashboard provides insights into NSCLC data.")
 

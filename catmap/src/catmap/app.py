@@ -65,6 +65,12 @@ def _initialize_state():
     columns_nsclc.remove('UMAP2')
     st.session_state.column_options_nsclc = columns_nsclc
     st.session_state.selected_column_nsclc = columns_nsclc[0]
+    st.session_state.nsclc_caption_dict = {
+        "Study": "Data is grouped by the study that it originated from.", 
+        "Patient": "Data is grouped by individual patients across all studies.", 
+        "Cell_Cluster_level1": "Data is grouped by the high level cell type represented (9 total).", 
+        "Cell_Cluster_level2": "Data is grouped by the low level cell type represented (27 total)",
+        "Stage": "Data is grouped by the stage of the cancer represented."}
 
     st.session_state.df_colon = pd.read_csv(csv_path_colon_cancer)
     columns_colon = st.session_state.df_colon.columns.tolist()
