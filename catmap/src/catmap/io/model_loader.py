@@ -22,8 +22,8 @@ import joblib
 
 MODEL_WEIGHTS_PATH = os.path.join(
     Path(__file__).resolve().parent.parent, "data", "nsclc-scvi-model")
-TEST_ADATA_PATH = os.path.join(
-    Path(__file__).resolve().parent.parent, "data", "adata-test.h5ad")
+CELL_TYPE_RFC_PATH = os.path.join(
+    Path(__file__).resolve().parent.parent, "data", "nsclc-cell-cluster-rfc", "cc1_rfc.joblib")
 
 
 def load_nsclc_embedding_model(adata: anndata.AnnData) -> scvi.model.SCVI:
@@ -35,8 +35,13 @@ def load_nsclc_embedding_model(adata: anndata.AnnData) -> scvi.model.SCVI:
 
 def load_adata(adata_path: str) -> anndata.AnnData:
     if not os.path.isfile(adata_path):
-        raise ValueError(f"Path for adata {adata_path} does not exist or is not a file")
+        raise ValueError(
+            f"Path for adata {adata_path} does not exist or is not a file")
 
-    adata = sc.read(TEST_ADATA_PATH)
+    adata = sc.read(adata_path)
 
     return adata
+
+
+def load_rfc_cell_type_classifier() -> RandomForestClassifier:
+    return joblib.load(CELL_TYPE_RFC_PATH)

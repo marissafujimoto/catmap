@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 import anndata
 import scvi
-
+from sklearn.ensemble import RandomForestClassifier
 
 from catmap.io import model_loader
 
@@ -36,3 +36,8 @@ class TestModelLoader(unittest.TestCase):  # pylint: disable=missing-class-docst
         self.assertIsInstance(scvi_model, scvi.model.SCVI)
         self.assertTrue(np.array_equal(
             scvi_model.adata.X.todense(), adata.X.todense()))
+
+    def test_load_cell_type_rfc(self):
+        rfc = model_loader.load_rfc_cell_type_classifier()
+        self.assertIsNotNone(rfc)
+        self.assertIsInstance(rfc, RandomForestClassifier)
