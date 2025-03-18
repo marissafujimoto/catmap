@@ -1,7 +1,7 @@
 # `catmap`
 
 ![Build/Test Workflow](https://github.com/marissafujimoto/catmap/actions/workflows/build_test.yml/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/marissafujimoto/catmap/badge.svg?branch=setup-ci)](https://coveralls.io/github/marissafujimoto/catmap?branch=setup-ci)
+[![Coverage Status](https://coveralls.io/repos/github/marissafujimoto/catmap/badge.svg?branch=main)](https://coveralls.io/github/marissafujimoto/catmap?branch=main)
 
 A python based map of cancer transcriptomics. Written in python and currently in development.
 
