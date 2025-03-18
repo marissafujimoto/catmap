@@ -89,28 +89,27 @@ class TestAppUI(unittest.TestCase):
 
     def test_selectbox_dropdown_page_one(self):
         """A user clicks on the info button on page 1 to open and close it."""
-        # TODO: when unit test framework is finished, test if color of the px.scatter changes based on column
         self.at.button[0].click().run()  # move to page 1
         self.at.selectbox[0].set_value("Stage").run()  # select Stage as column
         self.assertEqual(
             self.at.session_state.selected_column_nsclc, "Stage")
         self.assertEqual(self.at.session_state.current_page, "page_1")
         self.assertEqual(self.at.selectbox[0].label, "Column")
-        self.assertEqual(
-            self.at.selectbox[0].options, ["Study", "Patient",
-                                           "Cell_Cluster_level1", "Cell_Cluster_level2", "Stage"])
+        self.assertEqual(self.at.selectbox[0].options,
+                         ["Study", "Patient", "Cell_Cluster_level1",
+                          "Cell_Cluster_level2", "Stage"])
 
     def test_selectbox_dropdown_page_two(self):
         """A user clicks on the info button on page 2 to open and close it."""
-        # TODO: when unit test framework is finished, test if color of the px.scatter changes based on column
         self.at.button[1].click().run()  # move to page 2
         self.at.selectbox[0].set_value("Stage").run()  # select Stage as column
         self.assertEqual(
             self.at.session_state.selected_column_colon, "Stage")
         self.assertEqual(self.at.session_state.current_page, "page_2")
         self.assertEqual(self.at.selectbox[0].label, "Column")
-        self.assertEqual(self.at.selectbox[0].options, ["Patient", "Cluster Level 1", "Cluster Level 2",
-                                                        "Cancer/Normal", "Stage", "Lymph Node Status", "MMR Status", "MMR MLH1"])
+        self.assertEqual(self.at.selectbox[0].options,
+                         ["Patient", "Cluster Level 1", "Cluster Level 2",
+                          "Cancer/Normal", "Stage", "Lymph Node Status", "MMR Status", "MMR MLH1"])
 
 
 if __name__ == "__main__":
