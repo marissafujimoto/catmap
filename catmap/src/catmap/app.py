@@ -1,16 +1,18 @@
-"""Module for the catmap streamlit application."""
+"""
+Module for the catmap streamlit application.
+
+Contains the highest level of page layout and the state initialization.
+"""
 import os
-import sys
 from pathlib import Path
 
 import streamlit as st
 import pandas as pd
 
 from catmap.ui.component.header import Header
-from catmap.ui.component.embedding_plotter import EmbeddingPlotter
-from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.page_1 import Page1
 from catmap.ui.component.page_2 import Page2
+
 
 def start():
     """Sets up the components and initializes the state."""
@@ -43,6 +45,7 @@ def start():
 
 
 def _initialize_state():
+    """Helper function to initialize the session state."""
     if "current_page" not in st.session_state:
         st.session_state.current_page = "home"
 

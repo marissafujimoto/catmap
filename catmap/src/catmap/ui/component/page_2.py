@@ -1,7 +1,7 @@
-from pathlib import Path
-
+"""
+Module for the streamlit page showing the colon cancer data.
+"""
 import streamlit as st
-import pandas as pd
 from streamlit.delta_generator import DeltaGenerator
 
 from catmap.ui.component.embedding_plotter import EmbeddingPlotter
@@ -11,7 +11,9 @@ from catmap.ui.component.info_button import InfoButton
 from catmap.ui.component.return_home_button import ReturnHomeButton
 
 
-class Page2(AbstractUIComponent):
+class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
+    """Class for displaying colon cancer embeddings and information."""
+
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """Sets up the components and initializes the state."""
         col1, col2 = parent.columns([6, 2])
@@ -22,15 +24,16 @@ class Page2(AbstractUIComponent):
             select_column_dropdown.build(parent)
 
         with col2:
-            info_button = InfoButton()
-            info_button.build(parent)
+            colon_cancer_info_button = InfoButton()
+            colon_cancer_info_button.build(parent)
 
         embedding_plotter = EmbeddingPlotter(
             st.session_state.df_colon, st.session_state.selected_column_colon, "X", "Y")
         embedding_plotter.build(parent)
         with parent.expander("About this dashboard"):
             # TODO: write a more informative summary of the data
-            parent.write("This dashboard provides insights into catmap data.")
+            parent.write(
+                "This dashboard provides insights into colon cancer data.")
 
         home_button = ReturnHomeButton()
         home_button.build(parent)
