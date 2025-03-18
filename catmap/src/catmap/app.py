@@ -12,8 +12,6 @@ from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.page_1 import Page1
 from catmap.ui.component.page_2 import Page2
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-
 def start():
     """Sets up the components and initializes the state."""
     _initialize_state()
