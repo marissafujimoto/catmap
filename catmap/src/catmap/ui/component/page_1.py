@@ -16,16 +16,16 @@ class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
 
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """Sets up the components and initializes the state."""
-        col1, col2 = parent.columns([6, 2])
+        #col1, col2 = parent.columns([6, 2])
 
-        with col1:
-            select_column_dropdown = SelectColumnDropdown(
-                st.session_state.column_options_nsclc, "selected_column_nsclc")
-            select_column_dropdown.build(parent)
+        #with col1:
+        select_column_dropdown = SelectColumnDropdown(
+            st.session_state.column_options_nsclc, "selected_column_nsclc")
+        select_column_dropdown.build(parent)
 
-        with col2:
-            nsclc_info_button = InfoButton()
-            nsclc_info_button.build(parent)
+        #with col2:
+        #    nsclc_info_button = InfoButton()
+        #    nsclc_info_button.build(parent)
 
         caption_text = st.session_state.nsclc_caption_dict[st.session_state.selected_column_nsclc]
         st.caption(caption_text)
@@ -33,6 +33,7 @@ class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
         embedding_plotter = EmbeddingPlotter(
             st.session_state.df_nsclc, st.session_state.selected_column_nsclc, "UMAP1", "UMAP2")
         embedding_plotter.build(parent)
+        #st.plotly_chart(embedding_plotter, use_container_width=True, height=400)
         with parent.expander("Visualization Overview"):
             # TODO: write a more informative summary of the data
             parent.write("This dashboard provides insights into NSCLC data.")

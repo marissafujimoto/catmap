@@ -30,5 +30,9 @@ class EmbeddingPlotter(AbstractUIComponent):  # pylint: disable=too-few-public-m
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """Builds the component which plots the embedding data."""
         fig = px.scatter(self.df, x=self.xlab,
-                         y=self.ylab, color=self.column)
+                         y=self.ylab, color=self.column,
+                         category_orders={"Stage": ["I", "II", "III", "III/IV", "IV"]})
+        fig.update_layout(legend= {'itemsizing': 'constant'})
+        fig.update_traces(marker=dict(size=1))
+        fig.update_layout(width=800, height=800)
         parent.plotly_chart(fig)

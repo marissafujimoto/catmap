@@ -46,6 +46,7 @@ def start():
 
 def _initialize_state():
     """Helper function to initialize the session state."""
+    st.set_page_config(layout="wide")
     if "current_page" not in st.session_state:
         st.session_state.current_page = "home"
 
