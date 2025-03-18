@@ -34,6 +34,9 @@ def load_nsclc_embedding_model(adata: anndata.AnnData) -> scvi.model.SCVI:
 
 
 def load_adata(adata_path: str) -> anndata.AnnData:
+    if not os.path.isfile(adata_path):
+        raise ValueError(f"Path for adata {adata_path} does not exist or is not a file")
+
     adata = sc.read(TEST_ADATA_PATH)
 
     return adata

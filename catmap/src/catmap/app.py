@@ -38,6 +38,4 @@ def _initialize_state():
     st.session_state.column_options = columns
     st.session_state.selected_column = columns[0]
 
-    load_nsclc_embedding_model()
-
 start()
