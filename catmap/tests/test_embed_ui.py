@@ -12,7 +12,7 @@ TEST_ADATA_PATH = os.path.join(
     Path(__file__).resolve().parent, "data", "adata-test.h5ad")
 
 
-class MockFileUpload():
+class MockFileUpload():  # pylint: disable=too-few-public-methods
     """A class for mocking a file upload result"""
 
     def __init__(self, name: str, backing_file_path: str):
@@ -45,13 +45,9 @@ class TestEmbedUI(unittest.TestCase):
         self.at = AppTest.from_file(
             "../src/catmap/app.py", default_timeout=20).run()
 
-    @mock.patch("catmap.ui.component.embedding_plotter.EmbeddingPlotter.__new__")
-    @mock.patch("streamlit.file_uploader")
-    def test_embed_with_valid_file(self, mock_upload, mock_plotter):
-        """A user clicks to go to page 1 then clicks the embed button and then uploads a file."""
-        mock_upload.return_value = MockFileUpload(
-            "test.h5ad", TEST_ADATA_PATH)
-
+    def navigate_to_embed_page(self):
+        """Helper to navigate to embed page"""
+        # pylint: disable=R0801
         self.assertEqual(self.at.session_state.current_page,
                          "home")  # start on home page
         self.at.button[0].click().run()
@@ -60,6 +56,18 @@ class TestEmbedUI(unittest.TestCase):
         self.at.button[1].click().run()
         self.assertEqual(self.at.session_state.current_page,
                          "embed")  # After click, move to embed page
+        # pylint: enable=R0801
+
+    @mock.patch("catmap.ui.component.embedding_plotter.EmbeddingPlotter.__new__")
+    @mock.patch("streamlit.file_uploader")
+    def test_embed_with_valid_file(self, mock_upload, mock_plotter):
+        """
+        A user clicks to go to page 1 then clicks the embed button and then uploads a file.
+        """
+        mock_upload.return_value = MockFileUpload(
+            "test.h5ad", TEST_ADATA_PATH)
+
+        self.navigate_to_embed_page()
 
         # The last data plotted should be the predicted labels visual
         self.assertEqual(
@@ -68,17 +76,12 @@ class TestEmbedUI(unittest.TestCase):
     @mock.patch("catmap.ui.component.embedding_plotter.EmbeddingPlotter.__new__")
     @mock.patch("streamlit.file_uploader")
     def test_embed_with_no_file(self, mock_upload, mock_plotter):
-        """A user clicks to go to page 1 then clicks the embed button without uploading a file."""
+        """
+        A user clicks to go to page 1 then clicks the embed button without uploading a file.
+        """
         mock_upload.return_value = None
 
-        self.assertEqual(self.at.session_state.current_page,
-                         "home")  # start on home page
-        self.at.button[0].click().run()
-        self.assertEqual(self.at.session_state.current_page,
-                         "page_1")  # After click, move to page 1
-        self.at.button[1].click().run()
-        self.assertEqual(self.at.session_state.current_page,
-                         "embed")  # After click, move to embed page
+        self.navigate_to_embed_page()
 
         # The last data plotted should be the first column of NSCLC
         self.assertEqual(
@@ -87,18 +90,13 @@ class TestEmbedUI(unittest.TestCase):
     @mock.patch("catmap.ui.component.embedding_plotter.EmbeddingPlotter.__new__")
     @mock.patch("streamlit.file_uploader")
     def test_embed_with_invalid_file(self, mock_upload, mock_plotter):
-        """A user clicks to go to page 1 then clicks the embed button then uploads an invalid file."""
+        """
+        A user clicks to go to page 1 then clicks the embed button then uploads an invalid file.
+        """
         mock_upload.return_value = MockFileUpload(
             "not-an-h5ad.txt", TEST_ADATA_PATH)
 
-        self.assertEqual(self.at.session_state.current_page,
-                         "home")  # start on home page
-        self.at.button[0].click().run()
-        self.assertEqual(self.at.session_state.current_page,
-                         "page_1")  # After click, move to page 1
-        self.at.button[1].click().run()
-        self.assertEqual(self.at.session_state.current_page,
-                         "embed")  # After click, move to embed page
+        self.navigate_to_embed_page()
 
         # The last data plotted should be the first column of NSCLC
         self.assertEqual(
