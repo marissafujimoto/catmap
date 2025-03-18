@@ -11,6 +11,8 @@ from catmap.ui.component.embedding_plotter import EmbeddingPlotter
 from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.page_1 import Page1
 from catmap.ui.component.page_2 import Page2
+from catmap.ui.component.embed_results_page import EmbedResultsPage
+
 
 def start():
     """Sets up the components and initializes the state."""
@@ -40,6 +42,10 @@ def start():
     elif st.session_state.current_page == "page_2":
         other_page = Page1()
         other_page.build(st)
+
+    elif st.session_state.current_page == "embed":
+        embed_page = EmbedResultsPage()
+        embed_page.build(st)
 
 
 def _initialize_state():
