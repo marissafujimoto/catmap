@@ -1,7 +1,7 @@
 # `catmap`
+
 ![Build/Test Workflow](https://github.com/marissafujimoto/catmap/actions/workflows/build_test.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/marissafujimoto/catmap/badge.svg?branch=setup-ci)](https://coveralls.io/github/marissafujimoto/catmap?branch=setup-ci)
-
 
 A python based map of cancer transcriptomics. Written in python and currently in development.
 
@@ -33,11 +33,11 @@ Furthermore we hope to support the projection of new observations onto the visua
 
 ## Data
 
-We are using the data from a meta-analysis of non-small-cell-lung cancer data sets as well as a dataset of 56 human cancer types.
+We are using the data from a meta-analysis of non-small-cell-lung cancer data sets as well as a dataset on colon cancer.
 
 https://www.nature.com/articles/s41597-023-02074-6
 
-https://pmc.ncbi.nlm.nih.gov/articles/PMC9896021/
+https://singlecell.broadinstitute.org/single_cell/study/SCP1162/human-colon-cancer-atlas-c295
 
 ## Usage Instructions
 

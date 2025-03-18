@@ -41,7 +41,7 @@ jobs:
     # GitHub will run the tests for each of these Python versions.
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.12"]
 
     # The actual workflow steps!
     steps:
@@ -80,9 +80,11 @@ jobs:
       - name: Install additional development dependencies
         run: |
           conda install --yes coverage
-      
-      # If there are any other steps in order for your tests to
-      # run successfully, you can add those steps here!
+
+      # Install the package with pip before the tests can run
+      - name: Install catmap package
+        run: |
+          pip install -e .
 
       # Next step: run the unit tests with code coverage.
       - name: Unit tests

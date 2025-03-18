@@ -1,5 +1,6 @@
 """Module for the catmap streamlit application."""
 import os
+import sys
 from pathlib import Path
 
 import streamlit as st
@@ -10,7 +11,6 @@ from catmap.ui.component.embedding_plotter import EmbeddingPlotter
 from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.page_1 import Page1
 from catmap.ui.component.page_2 import Page2
-
 
 def start():
     """Sets up the components and initializes the state."""
