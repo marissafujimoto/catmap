@@ -77,13 +77,13 @@ class TestAppUI(unittest.TestCase):
 
     def test_expander_label_page_one(self):
         """A user clicks on the info button on page 1 to open and close it."""
-        self.at.button[0].click().run() # move to page 1
+        self.at.button[0].click().run()  # move to page 1
         self.assertEqual(self.at.session_state.current_page, "page_1")
         self.assertEqual(self.at.expander[0].label, "About this dashboard")
 
     def test_expander_label_page_two(self):
         """A user clicks on the info button on page 2 to open and close it."""
-        self.at.button[1].click().run() # move to page 2
+        self.at.button[1].click().run()  # move to page 2
         self.assertEqual(self.at.session_state.current_page, "page_2")
         self.assertEqual(self.at.expander[0].label, "About this dashboard")
 
@@ -91,9 +91,9 @@ class TestAppUI(unittest.TestCase):
         """A user clicks on the info button on page 1 to open and close it."""
         # TODO: when unit test framework is finished, test if color of the px.scatter changes based on column
         self.at.button[0].click().run()  # move to page 1
-        self.at.selectbox[0].set_value("Stage").run() # select Stage as column
+        self.at.selectbox[0].set_value("Stage").run()  # select Stage as column
         self.assertEqual(
-            self.at.session_state.selected_column_colon == "Stage")
+            self.at.session_state.selected_column_nsclc, "Stage")
         self.assertEqual(self.at.session_state.current_page, "page_1")
         self.assertEqual(self.at.selectbox[0].label, "Column")
         self.assertEqual(
@@ -104,9 +104,9 @@ class TestAppUI(unittest.TestCase):
         """A user clicks on the info button on page 2 to open and close it."""
         # TODO: when unit test framework is finished, test if color of the px.scatter changes based on column
         self.at.button[1].click().run()  # move to page 2
-        self.at.selectbox[0].set_value("Stage").run() # select Stage as column
+        self.at.selectbox[0].set_value("Stage").run()  # select Stage as column
         self.assertEqual(
-            self.at.session_state.selected_column_colon == "Stage")
+            self.at.session_state.selected_column_colon, "Stage")
         self.assertEqual(self.at.session_state.current_page, "page_2")
         self.assertEqual(self.at.selectbox[0].label, "Column")
         self.assertEqual(self.at.selectbox[0].options, ["Patient", "Cluster Level 1", "Cluster Level 2",
