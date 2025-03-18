@@ -6,7 +6,7 @@ from streamlit.delta_generator import DeltaGenerator
 from catmap.ui.component.abstract_component import AbstractUIComponent
 
 
-class SelectColumnDropdown(AbstractUIComponent):
+class SelectColumnDropdown(AbstractUIComponent):  # pylint: disable=too-few-public-methods
     """A UI component for creating a dropdown filter to select a column
 
     This class generates a dropdown menu that allows users to select

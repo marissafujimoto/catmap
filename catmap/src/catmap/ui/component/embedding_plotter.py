@@ -1,5 +1,4 @@
 """Module to fill the embedding plotter window."""
-import streamlit as st
 import plotly.express as px
 
 from streamlit.delta_generator import DeltaGenerator

@@ -9,6 +9,7 @@ class InfoButton(AbstractUIComponent): # pylint: disable=too-few-public-methods
     """Class to create info button."""
 
     def toggle_button_state(self):
+        """Helper function to toggle the state of the button"""
         st.session_state.button = not st.session_state.button
 
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
