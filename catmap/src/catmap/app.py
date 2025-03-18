@@ -8,7 +8,6 @@ import pandas as pd
 from catmap.ui.component.header import Header
 from catmap.ui.component.embedding_plotter import EmbeddingPlotter
 from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
-from catmap.io.model_loader import load_nsclc_embedding_model
 
 
 def start():

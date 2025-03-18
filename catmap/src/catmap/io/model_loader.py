@@ -12,10 +12,7 @@ import os
 from pathlib import Path
 
 import anndata
-import numpy as np
-import pandas as pd
 import scanpy as sc
-import torch
 import scvi
 from sklearn.ensemble import RandomForestClassifier
 import joblib

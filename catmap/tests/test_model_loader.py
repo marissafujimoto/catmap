@@ -27,7 +27,7 @@ class TestModelLoader(unittest.TestCase):  # pylint: disable=missing-class-docst
 
     def test_load_adata_invalid_path(self):
         with self.assertRaises(ValueError):
-            adata = model_loader.load_adata("path-does-not-exist")
+            model_loader.load_adata("path-does-not-exist")
 
     def test_load_scvi_model(self):
         adata = model_loader.load_adata(TEST_ADATA_PATH)
