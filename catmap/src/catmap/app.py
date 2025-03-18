@@ -6,7 +6,6 @@ from pathlib import Path
 import streamlit as st
 import pandas as pd
 
-#pylint: disable ='unused-import'
 from catmap.ui.component.header import Header
 from catmap.ui.component.embedding_plotter import EmbeddingPlotter
 from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
@@ -22,9 +21,7 @@ def start():
     Header().build(st)
 
     if st.session_state.current_page == "home":
-        #pylint: disable ='fixme'
         # TODO extract to home page component
-        #pylint: enable ='fixme'
         st.write("Navigate to other pages:")
         col1, col2 = st.columns(2)
 
