@@ -29,7 +29,7 @@ where = ["catmap/src"]
 include = ["catmap*"]
 
 [tool.setuptools.package-data]
-"catmap" = ["data/*"]
+"catmap" = ["data/**/*"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}

@@ -6,18 +6,25 @@ vector.
 
 One quirk of this model loader is that it needs to have a registered anndata file at the
 time of loading the model weights. This is a limitation in SCVI. This quirk means that
-the interface for loading a model also will load in anndata at the same time.
+the interface for loading a model also will need the anndata at the same time.
 """
 import os
-import tempfile
+from pathlib import Path
 
 import anndata
 import numpy as np
 import pandas as pd
 import scanpy as sc
+import torch
 import scvi
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 
+MODEL_WEIGHTS_PATH = os.path.join(Path(__file__).resolve().parent.parent, "data", "nsclc-scvi-model")
+TEST_ADATA_PATH = os.path.join(Path(__file__).resolve().parent.parent, "data", "adata-test.h5ad")
+
 def load_nsclc_embedding_model() -> scvi.model.SCVI:
-    raise NotImplementedError()
+    torch.set_float32_matmul_precision("high")
+    adata = sc.read(TEST_ADATA_PATH)
+    scvi_model = scvi.model.SCVI.load(MODEL_WEIGHTS_PATH, adata)
+    scvi_model.is_trained = True
