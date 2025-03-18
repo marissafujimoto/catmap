@@ -17,3 +17,4 @@ dependencies:
   - pylint=3.3.3
   - python-build=1.2.2
   - pip=25.0
+  - pytorch=2.4
