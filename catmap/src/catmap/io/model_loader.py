@@ -78,7 +78,15 @@ def embed_nsclc_data(adata_path: str) -> pd.DataFrame:
     scvi_model = load_nsclc_embedding_model(adata)
     rfc = load_rfc_cell_type_classifier()
 
+    print("Getting Latent Representation")
     latent = scvi_model.get_latent_representation(adata)
+
+    print("Predicting Cell Types")
     predicted_cell_type = rfc.predict(latent)
 
-    print("Done embedding")
+    print("Calculating UMAP")
+    adata.obsm["X_scVI"] = latent
+    sc.pp.neighbors(adata, n_neighbors=15, use_rep="X_scVI")
+    sc.tl.umap(adata)
+
+    print("Embedding Done")
