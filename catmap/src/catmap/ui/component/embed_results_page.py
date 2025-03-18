@@ -14,6 +14,8 @@ from catmap.io.model_loader import embed_nsclc_data
 class EmbedResultsPage(AbstractUIComponent):
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """Builds the embed results component"""
+        parent.write(
+            "Upload an h5ad file from NSCLC to visualize clustering and predict cell types.")
         col1, col2 = parent.columns([6, 2])
 
         with col1:
@@ -39,8 +41,10 @@ class EmbedResultsPage(AbstractUIComponent):
             embedding_plotter.build(parent)
 
         with parent.expander("About Embedding"):
-            # TODO: expand on this writing
-            parent.write("This is placeholder writing.")
+            parent.write("This embedding uses an unsupervised model trained on the raw NSCLC data \
+                         and a random forest classifier trained to classify cell types in the \
+                         latent space. The final visualization is a UMAP reduction with the \
+                         predicted labels superimposed.")
 
         home_button = ReturnHomeButton()
         home_button.build(parent)
