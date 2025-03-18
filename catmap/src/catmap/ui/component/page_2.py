@@ -30,7 +30,7 @@ class Page2(AbstractUIComponent):
         embedding_plotter.build(parent)
         with parent.expander("About this dashboard"):
             # TODO: write a more informative summary of the data
-            st.write("This dashboard provides insights into catmap data.")
+            parent.write("This dashboard provides insights into catmap data.")
 
         home_button = ReturnHomeButton()
         home_button.build(parent)
