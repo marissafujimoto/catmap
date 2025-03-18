@@ -11,6 +11,7 @@ the interface for loading a model also will need the anndata at the same time.
 import os
 from pathlib import Path
 
+import pandas as pd
 import anndata
 import scanpy as sc
 import scvi
@@ -70,3 +71,14 @@ def load_rfc_cell_type_classifier() -> RandomForestClassifier:
         rfc (RandomForestClassifier): The random forest classifier object.
     """
     return joblib.load(CELL_TYPE_RFC_PATH)
+
+
+def embed_nsclc_data(adata_path: str) -> pd.DataFrame:
+    adata = load_adata(adata_path)
+    scvi_model = load_nsclc_embedding_model(adata)
+    rfc = load_rfc_cell_type_classifier()
+
+    latent = scvi_model.get_latent_representation(adata)
+    predicted_cell_type = rfc.predict(latent)
+
+    print("Done embedding")
