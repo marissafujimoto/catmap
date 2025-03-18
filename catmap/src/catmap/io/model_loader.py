@@ -20,11 +20,20 @@ import scvi
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 
-MODEL_WEIGHTS_PATH = os.path.join(Path(__file__).resolve().parent.parent, "data", "nsclc-scvi-model")
-TEST_ADATA_PATH = os.path.join(Path(__file__).resolve().parent.parent, "data", "adata-test.h5ad")
+MODEL_WEIGHTS_PATH = os.path.join(
+    Path(__file__).resolve().parent.parent, "data", "nsclc-scvi-model")
+TEST_ADATA_PATH = os.path.join(
+    Path(__file__).resolve().parent.parent, "data", "adata-test.h5ad")
 
-def load_nsclc_embedding_model() -> scvi.model.SCVI:
-    torch.set_float32_matmul_precision("high")
-    adata = sc.read(TEST_ADATA_PATH)
+
+def load_nsclc_embedding_model(adata: anndata.AnnData) -> scvi.model.SCVI:
     scvi_model = scvi.model.SCVI.load(MODEL_WEIGHTS_PATH, adata)
     scvi_model.is_trained = True
+
+    return scvi_model
+
+
+def load_adata(adata_path: str) -> anndata.AnnData:
+    adata = sc.read(TEST_ADATA_PATH)
+
+    return adata
