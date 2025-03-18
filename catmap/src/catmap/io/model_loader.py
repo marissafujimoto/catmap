@@ -27,6 +27,15 @@ CELL_TYPE_RFC_PATH = os.path.join(
 
 
 def load_nsclc_embedding_model(adata: anndata.AnnData) -> scvi.model.SCVI:
+    """
+    Load the trained NSCLC embedding model.
+
+    Args:
+        adata (AnnData): The anndata object containing raw counts that this model will embed with.
+
+    Returns:
+        scvi_model (scvi.model.SCVI): The scvi model object
+    """
     scvi_model = scvi.model.SCVI.load(MODEL_WEIGHTS_PATH, adata)
     scvi_model.is_trained = True
 
@@ -34,6 +43,18 @@ def load_nsclc_embedding_model(adata: anndata.AnnData) -> scvi.model.SCVI:
 
 
 def load_adata(adata_path: str) -> anndata.AnnData:
+    """
+    Load adata from a given path.
+
+    Args:
+        adata_path (str): The path to the adata file.
+
+    Returns:
+        adata (AnnData): The loaded anndata object.
+
+    Raises:
+        ValueError: If the path does not exist or is not a file
+    """
     if not os.path.isfile(adata_path):
         raise ValueError(
             f"Path for adata {adata_path} does not exist or is not a file")
@@ -44,4 +65,11 @@ def load_adata(adata_path: str) -> anndata.AnnData:
 
 
 def load_rfc_cell_type_classifier() -> RandomForestClassifier:
+    """
+    Load the random forest classifier for NSCLC to classify cell type from NSCLC embeddings. This
+    model should be used in conjunction with the model loaded from load_nsclc_embedding_model.
+
+    Returns:
+        rfc (RandomForestClassifier): The random forest classifier object.
+    """
     return joblib.load(CELL_TYPE_RFC_PATH)
