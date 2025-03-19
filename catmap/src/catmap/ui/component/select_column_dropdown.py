@@ -26,6 +26,6 @@ class SelectColumnDropdown(AbstractUIComponent):  # pylint: disable=too-few-publ
     def build(self, parent: DeltaGenerator):
         """Builds the dropdown filter and initializes it to the first column."""
         option = parent.selectbox(
-            "Column", options=self.columns, index=0)
+            "Group by:", options=self.columns, index=0)
 
         st.session_state[self.selected_column_key] = option

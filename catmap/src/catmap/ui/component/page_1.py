@@ -9,6 +9,7 @@ from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.abstract_component import AbstractUIComponent
 from catmap.ui.component.info_button import InfoButton
 from catmap.ui.component.return_home_button import ReturnHomeButton
+from catmap.ui.component.visualization_overview_expander import VisualizationOverviewExpander
 
 
 class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
@@ -16,30 +17,35 @@ class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
 
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """Sets up the components and initializes the state."""
-        #col1, col2 = parent.columns([6, 2])
+        col1,col2,col3 = parent.columns([0.15,0.7,0.15])
 
-        #with col1:
-        select_column_dropdown = SelectColumnDropdown(
-            st.session_state.column_options_nsclc, "selected_column_nsclc")
-        select_column_dropdown.build(parent)
+        with col2:
+            parent.title("Non-Small-Cell-Lung Cancer Catmap")
 
-        #with col2:
-        #    nsclc_info_button = InfoButton()
-        #    nsclc_info_button.build(parent)
+            select_column_dropdown = SelectColumnDropdown(
+                st.session_state.column_options_nsclc, "selected_column_nsclc")
+            select_column_dropdown.build(parent)
 
-        caption_text = st.session_state.nsclc_caption_dict[st.session_state.selected_column_nsclc]
-        st.caption(caption_text)
+            caption_text = st.session_state.nsclc_caption_dict[st.session_state.selected_column_nsclc]
+            st.caption(caption_text)
 
-        embedding_plotter = EmbeddingPlotter(
-            st.session_state.df_nsclc, st.session_state.selected_column_nsclc, "UMAP1", "UMAP2")
-        embedding_plotter.build(parent)
-        #st.plotly_chart(embedding_plotter, use_container_width=True, height=400)
-        with parent.expander("Visualization Overview"):
-            # TODO: write a more informative summary of the data
-            parent.write("This dashboard provides insights into NSCLC data.")
-        with parent.expander("Data Overview"):
-            # TODO: write a more informative summary of the data
-            parent.write("This dashboard provides insights into NSCLC data.")
+            embedding_plotter = EmbeddingPlotter(
+                st.session_state.df_nsclc, st.session_state.selected_column_nsclc, "UMAP1", "UMAP2")
+            embedding_plotter.build(parent)
 
-        home_button = ReturnHomeButton()
-        home_button.build(parent)
+            vis_overview_expander = VisualizationOverviewExpander()
+            vis_overview_expander.build(parent)
+
+            with parent.expander("Data Overview"):
+                # TODO: write a more informative summary of the data
+                parent.write("Add info from Erik.")
+
+            home_button = ReturnHomeButton()
+            home_button.build(parent)
+
+        with col3:
+            st.write("#")
+            st.write("#")
+            st.write("#")
+            nsclc_info_button = InfoButton()
+            nsclc_info_button.build(parent)

@@ -31,7 +31,8 @@ class EmbeddingPlotter(AbstractUIComponent):  # pylint: disable=too-few-public-m
         """Builds the component which plots the embedding data."""
         fig = px.scatter(self.df, x=self.xlab,
                          y=self.ylab, color=self.column,
-                         category_orders={"Stage": ["I", "II", "III", "III/IV", "IV"]})
+                         category_orders={"Stage": ["I", "II", "III", "III/IV", "IV"]},
+                         opacity=0.7)
         fig.update_layout(legend= {'itemsizing': 'constant'})
         fig.update_traces(marker=dict(size=1))
         fig.update_layout(width=800, height=800)

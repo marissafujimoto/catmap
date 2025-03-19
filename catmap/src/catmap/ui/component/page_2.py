@@ -9,6 +9,7 @@ from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.abstract_component import AbstractUIComponent
 from catmap.ui.component.info_button import InfoButton
 from catmap.ui.component.return_home_button import ReturnHomeButton
+from catmap.ui.component.visualization_overview_expander import VisualizationOverviewExpander
 
 
 class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
@@ -16,24 +17,31 @@ class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
 
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """Sets up the components and initializes the state."""
-        col1, col2 = parent.columns([6, 2])
-
-        with col1:
+        col1,col2,col3 = parent.columns([0.15,0.7,0.15])
+        with col2:
+            parent.title("Colon Cancer Catmap")
             select_column_dropdown = SelectColumnDropdown(
                 st.session_state.column_options_colon, "selected_column_colon")
             select_column_dropdown.build(parent)
+            caption_text = st.session_state.colon_caption_dict[st.session_state.selected_column_colon]
+            st.caption(caption_text)
+            embedding_plotter = EmbeddingPlotter(
+                st.session_state.df_colon, st.session_state.selected_column_colon, "X", "Y")
+            embedding_plotter.build(parent)
 
-        with col2:
-            colon_cancer_info_button = InfoButton()
-            colon_cancer_info_button.build(parent)
+            vis_overview_expander = VisualizationOverviewExpander()
+            vis_overview_expander.build(parent)
+            
+            with parent.expander("Data Overview"):
+                # TODO: write a more informative summary of the data
+                parent.write("Add info from Erik.")
 
-        embedding_plotter = EmbeddingPlotter(
-            st.session_state.df_colon, st.session_state.selected_column_colon, "X", "Y")
-        embedding_plotter.build(parent)
-        with parent.expander("About this dashboard"):
-            # TODO: write a more informative summary of the data
-            parent.write(
-                "This dashboard provides insights into colon cancer data.")
+            home_button = ReturnHomeButton()
+            home_button.build(parent)
 
-        home_button = ReturnHomeButton()
-        home_button.build(parent)
+        with col3:
+            st.write("#")
+            st.write("#")
+            st.write("#")
+            colon_info_button = InfoButton()
+            colon_info_button.build(parent)

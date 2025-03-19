@@ -18,7 +18,7 @@ def start():
     """Sets up the components and initializes the state."""
     _initialize_state()
 
-    Header().build(st)
+    #Header().build(st)
 
     if st.session_state.current_page == "home":
         # TODO extract to home page component
@@ -71,7 +71,7 @@ def _initialize_state():
         "Patient": "Data is grouped by individual patients across all studies.", 
         "Cell_Cluster_level1": "Data is grouped by the high level cell type represented (9 total).", 
         "Cell_Cluster_level2": "Data is grouped by the low level cell type represented (27 total)",
-        "Stage": "Data is grouped by the stage of the cancer represented."}
+        "Stage": "Data is grouped by the stage of the cancer."}
 
     st.session_state.df_colon = pd.read_csv(csv_path_colon_cancer)
     columns_colon = st.session_state.df_colon.columns.tolist()
@@ -79,6 +79,15 @@ def _initialize_state():
     columns_colon.remove('Y')
     st.session_state.column_options_colon = columns_colon
     st.session_state.selected_column_colon = columns_colon[0]
+    st.session_state.colon_caption_dict = {
+        "Patient": "Data is grouped by individual patients.", 
+        "Cluster Level 1": "Data is grouped by the high level cell type represented (7 total).", 
+        "Cluster Level 2": "Data is grouped by the low level cell type represented (20 total).", 
+        "Cancer/Normal": "Data is grouped by classification of whether or not it is cancerous.",
+        "Stage": "Data is grouped by the stage of the cancer.",
+        "Lymph Node Status": "Data is grouped by classification of whether or not cancer is found in lymph nodes (N- = no, N+ = yes)",
+        "MMR Status": "Data is group by MMR (mismatch repair) status (pMMR = MMR-proficient, dMMR = MMR-deficient, normal = non-cancerous)",
+        "MMR MLH1": "Data is grouped by MLH1 status (a gene that encodes a protein involved in MMR)"}
 
     if 'button' not in st.session_state:
         st.session_state.button = False
