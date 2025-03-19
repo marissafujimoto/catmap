@@ -19,12 +19,12 @@ class InfoButton(AbstractUIComponent): # pylint: disable=too-few-public-methods
             if st.session_state.current_page == "page_1":
                 st.info(f"Double click on a {st.session_state.selected_column_nsclc} option "
                         "in the plot legend to view data for that "
-                        "{st.session_state.selected_column_nsclc} option only. Single "
-                        "click on a {st.session_state.selected_column_nsclc} option to "
-                        "remove its data from the plot.")
+                        f"{st.session_state.selected_column_nsclc} option only. Single click on "
+                        f"a {st.session_state.selected_column_nsclc} option to remove its data "
+                        "from the plot.")
             if st.session_state.current_page == "page_2":
                 st.info(f"Double click on a {st.session_state.selected_column_colon} option "
                         "in the plot legend to view data for that "
-                        "{st.session_state.selected_column_colon} option only. Single click on "
-                        "a {st.session_state.selected_column_colon} option to remove its data "
+                        f"{st.session_state.selected_column_colon} option only. Single click on "
+                        f"a {st.session_state.selected_column_colon} option to remove its data "
                         "from the plot.")

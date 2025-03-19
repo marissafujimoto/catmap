@@ -171,9 +171,8 @@ class TestAppUI(unittest.TestCase):
         # pylint: disable=line-too-long
         self.assertEqual(
             self.at.info[0].value, "Double click on a Stage option "
-            "in the plot legend to view data "
-            "for that Stage option only. Single click on a Stage "
-            "option to remove its data from the plot.")
+            "in the plot legend to view data for that Stage option only. "
+            "Single click on a Stage option to remove its data from the plot.")
         # pylint: enable=line-too-long
         self.at.button[1].click().run()
         self.at.selectbox[0].set_value("MMR MLH1").run()  # select Stage as column
