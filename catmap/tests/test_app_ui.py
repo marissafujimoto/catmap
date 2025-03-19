@@ -34,7 +34,7 @@ class TestAppUI(unittest.TestCase):
         self.at.button[0].click().run()
         self.assertEqual(self.at.session_state.current_page,
                          "page_1")  # After click, move to page 2
-        self.at.button[0].click().run()
+        self.at.button[1].click().run()
         self.assertEqual(self.at.session_state.current_page, "home")
         # After click one page, return to home
 
@@ -54,7 +54,7 @@ class TestAppUI(unittest.TestCase):
         self.at.button[0].click().run()
         self.assertEqual(self.at.session_state.current_page, "page_1")
         self.assertFalse(self.at.info)  # Info is not displayed
-        self.at.button[1].click().run()
+        self.at.button[2].click().run()
         # pylint: disable=line-too-long
         self.assertTrue(self.at.info)
         # pylint: enable=line-too-long
@@ -141,7 +141,7 @@ class TestAppUI(unittest.TestCase):
         self.assertEqual(self.at.session_state.current_page, "page_1")
         self.assertFalse(self.at.info)  # Info is not displayed
         self.at.selectbox[0].set_value("Stage").run()  # select Stage as column
-        self.at.button[1].click().run()
+        self.at.button[2].click().run()
         # pylint: disable=line-too-long
         self.assertEqual(
             self.at.info[0].value, "Double click on a Stage option "
@@ -149,9 +149,9 @@ class TestAppUI(unittest.TestCase):
             "for that Stage option only. Single click on a Stage "
             "option to remove its data from the plot.")
         # pylint: enable=line-too-long
-        self.at.button[1].click().run()
+        self.at.button[2].click().run()
         self.at.selectbox[0].set_value("Patient").run()  # select Stage as column
-        self.at.button[1].click().run()
+        self.at.button[2].click().run()
         self.assertEqual(
             self.at.info[0].value, "Double click on a Patient option "
             "in the plot legend to view data "

@@ -11,6 +11,7 @@ from catmap.ui.component.info_button import InfoButton
 from catmap.ui.component.return_home_button import ReturnHomeButton
 from catmap.ui.component.visualization_overview_expander import VisualizationOverviewExpander
 from catmap.ui.component.data_overview_expander import DataOverviewExpander
+from catmap.ui.component.open_embedding_page_button import OpenEmbeddingPageButton
 
 
 class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
@@ -43,6 +44,9 @@ class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
 
             data_overview_expander = DataOverviewExpander()
             data_overview_expander.build(parent)
+        
+            open_embedding_page_button = OpenEmbeddingPageButton()
+            open_embedding_page_button.build(parent)
 
             home_button = ReturnHomeButton()
             home_button.build(parent)
