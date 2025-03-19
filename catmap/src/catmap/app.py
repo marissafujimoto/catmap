@@ -27,17 +27,30 @@ def start():
         # TODO extract to home page component
         HomePageHeader().build(st)
         
-        st.markdown("<h3 style='text-align: center;'>Navigate to catmaps with different datasets:</h3>", unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div style='text-align: justify; text-align-last: center; width: 80%; margin: auto;'>
+            <h4>
+            catmap stands for ca(ncer) t(ranscriptomics) map. It is a data visualization application and tool used to visualize and project single cell gene expression data from cancer cells.
+            </h4>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        
+        st.markdown("<h3 style='text-align: center;'>Navigate to catmaps with different visualizations:</h3>", unsafe_allow_html=True)
+
+        
 
         col4, col1, col2, col3 = st.columns([0.175, 0.325, 0.10, 0.40])
 
         with col1:
-            if st.button("Non-Small-Cell-Lung Cancer Dataset"):
+            if st.button("Non-Small-Cell-Lung Cancer"):
                 st.session_state.current_page = "page_1"
                 st.rerun()
-
+        
         with col3:
-            if st.button("Colon Cancer Dataset"):
+            if st.button("Colon Cancer"):   
                 st.session_state.current_page = "page_2"
                 st.rerun()
 

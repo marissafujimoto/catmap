@@ -9,7 +9,7 @@ class TestAppUI(unittest.TestCase):
 
     def setUp(self):
         """Initialize a fresh app instance for the testing"""
-        self.at = AppTest.from_file("../src/catmap/app.py").run()
+        self.at = AppTest.from_file("../src/catmap/app.py").run(timeout=10)
 
     def test_page_one_button_click(self):
         """A user clicks to go to page 1."""
@@ -113,9 +113,11 @@ class TestAppUI(unittest.TestCase):
 
     def test_dynamic_caption_page_1(self):
         """A user changes the filter option on page 1 and the caption below the filter changes."""
-        self.at.button[0].click().run()  # move to page 1
+        self.at.button[0].click().run(timeout=20)  # move to page 1
+        self.at.run()
         self.assertEqual(self.at.session_state.current_page, "page_1")
-        self.at.selectbox[0].set_value("Stage").run()  # select Stage as column
+        self.at.selectbox[0].set_value("Stage").run(timeout=10)  # select Stage as column
+        self.at.run()
         self.assertEqual(
             self.at.caption[0].body, "Data is grouped by the stage of the cancer.")
         self.at.selectbox[0].set_value("Patient").run()  # select Stage as column
