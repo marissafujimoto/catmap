@@ -12,8 +12,13 @@ from catmap.io.model_loader import embed_nsclc_data
 
 
 class EmbedResultsPage(AbstractUIComponent):
-    def build(self, parent: DeltaGenerator) -> DeltaGenerator:
-        """Builds the embed results component"""
+    def build(self, parent: DeltaGenerator):
+        """
+        Builds the embed results component
+
+        Args:
+            parent (DeltaGenerator): The parent container to build onto.
+        """
         parent.write(
             "Upload an h5ad file from NSCLC to visualize clustering and predict cell types.")
 
