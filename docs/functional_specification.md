@@ -9,6 +9,8 @@
 
 Our data is from the research paper, “An integrated single-cell transcriptomic dataset for non-small cell lung cancer”  https://www.nature.com/articles/s41597-023-02074-6. The main dataset we are using has 224,611 rows each corresponding to cells from human primary non-small cell lung cancer (NSCLC) tumors. It has data on the RNA of the cell, what stage the cancer is in, the patient, and the cell cluster levels. Also in the dataset we have a sparse matrix of gene expressions from the RNA sequence. These are more difficult to work with because each cell has 72,131 columns of gene expression with many of them being 0. Finally we have PCA and UMAP dimensionality reduction matrices which will be useful in creating our own dimensionality reduction.
 
+Additionally we have are using another data set from the Broad institute: https://singlecell.broadinstitute.org/single_cell/study/SCP1162/human-colon-cancer-atlas-c295#study-summary. This dataset profiles immune responses in tumor cells of 62 patients and 371,223 cells for colorectal tumors and adjacent normal tissues.
+
 ## User Stories
 
 ### Patient
@@ -29,40 +31,35 @@ The maintainer would keep the cancer transcription app running and respond to bu
 
 ## Use Cases
 
-  
-
 ### Use case: Interacting with filter on the cancer map
 
-* User: Open the app
+* User: Open the app and open the visualization of interest
 * System: Display the full map of cancer transcriptomics with no filtering applied
-* User: Select a filter based on age, gender, race, etc.
-* System: Show the map based on the subset of data
+* User: Select a field to group by(e.g. cancer stage)
+* System: Show the map colored by the selected filter and allow filtering through toggling groups
 
 ### Use case: Mapping the data for a new patient
-* User: Open the app
+* User: Open the app and open the visualization of interest
 * System: Display the full map of cancer transcriptomics with no filtering applied
 * User: Navigate to a new page where they can enter new data
-* System: Prompt for the new input
-* User: Input the data
-* System: Map the new data to the existing cancer map
-* User: Analyze the mapped location of the input data
-
-
-  
+* System: Prompt for the input file
+* System: Map the new data on a new embedding page
+* User: Analyze the mapped location of the input data and the predicted labels
 
 ### Use case: Patient viewing summary
 
-* User:  Open the app, user authentication
-* System: Display the full map of cancer transcriptomics with no filtering applied.
-* User: Select their cancer screening
-* System: Display a point on the map corresponding to their result
+* User: Open the app with your physician nearby
+* System: Display the full map of cancer transcriptomics with no filtering applied
+* User: Navigate to a new page where they can enter new data
+* System: Prompt for the input file
+* System: Map the new data on a new embedding page
+* User: Analyze the mapped location of the input data and the predicted labels with help from doctor to interpret results
 
 ### Use Case: Maintainer maintaining the app
 
 * User:
-	* Be able to access the backend of the app
+	* Be able to update code and respond to issues
 	* Be able to update the model with new data
 	* Be able to push this new version of the app to users
 	* Be able to fix bugs that are reported in the app
 	* Be able to add new datasets
-
