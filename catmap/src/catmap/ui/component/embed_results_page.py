@@ -16,6 +16,11 @@ class EmbedResultsPage(AbstractUIComponent):
         """Builds the embed results component"""
         parent.write(
             "Upload an h5ad file from NSCLC to visualize clustering and predict cell types.")
+
+        with parent.expander("Data Requirements"):
+            parent.write(
+                "The h5ad file should contain raw counts (not normalized or log transformed).")
+
         col1, col2 = parent.columns([6, 2])
 
         with col1:
