@@ -12,6 +12,8 @@ import pandas as pd
 from catmap.ui.component.header import Header
 from catmap.ui.component.page_1 import Page1
 from catmap.ui.component.page_2 import Page2
+from catmap.ui.component.embed_results_page import EmbedResultsPage
+
 
 
 def start():
@@ -42,6 +44,10 @@ def start():
     elif st.session_state.current_page == "page_2":
         other_page = Page2()
         other_page.build(st)
+
+    elif st.session_state.current_page == "embed":
+        embed_page = EmbedResultsPage()
+        embed_page.build(st)
 
 
 def _initialize_state():

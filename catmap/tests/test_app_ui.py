@@ -34,7 +34,7 @@ class TestAppUI(unittest.TestCase):
         self.at.button[0].click().run()
         self.assertEqual(self.at.session_state.current_page,
                          "page_1")  # After click, move to page 2
-        self.at.button[1].click().run()
+        self.at.button[2].click().run()
         self.assertEqual(self.at.session_state.current_page, "home")
         # After click one page, return to home
 
