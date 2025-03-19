@@ -8,7 +8,7 @@ class HomePageHeader:
         custom_html = """
         <style>
         h1 {
-            font-size: 120px !important;
+            font-size: 140px !important;
             font-weight: bold;
             text-align: center;
         }

@@ -12,42 +12,34 @@ import pandas as pd
 #from catmap.ui.component.header import Header
 from catmap.ui.component.page_1 import Page1
 from catmap.ui.component.page_2 import Page2
-<<<<<<< HEAD
-from catmap.ui.component.homepage_header import HomePageHeader
-=======
 from catmap.ui.component.embed_results_page import EmbedResultsPage
+from catmap.ui.component.homepage_header import HomePageHeader
 
 
->>>>>>> origin/main
 
 def start():
     """Sets up the components and initializes the state."""
     _initialize_state()
 
-<<<<<<< HEAD
-=======
     #Header().build(st)
 
->>>>>>> origin/main
     if st.session_state.current_page == "home":
         # TODO extract to home page component
         HomePageHeader().build(st)
         
-        st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-        #st.write("Navigate to other pages:")
+        st.markdown("<h3 style='text-align: center;'>Navigate to catmaps with different datasets:</h3>", unsafe_allow_html=True)
 
-        col1, col2 = st.columns([1,1])
+        col4, col1, col2, col3 = st.columns([0.175, 0.325, 0.10, 0.40])
 
         with col1:
-            if st.button("Go to Page 1"):
+            if st.button("Non-Small-Cell-Lung Cancer Dataset"):
                 st.session_state.current_page = "page_1"
                 st.rerun()
 
-        with col2:
-            if st.button("Go to Page 2"):
+        with col3:
+            if st.button("Colon Cancer Dataset"):
                 st.session_state.current_page = "page_2"
                 st.rerun()
-        st.markdown("</div>", unsafe_allow_html=True) 
 
     elif st.session_state.current_page == "page_1":
         nsclc_page = Page1()
