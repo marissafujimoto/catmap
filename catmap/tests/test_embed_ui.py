@@ -53,7 +53,7 @@ class TestEmbedUI(unittest.TestCase):
         self.at.button[0].click().run()
         self.assertEqual(self.at.session_state.current_page,
                          "page_1")  # After click, move to page 1
-        self.at.button[1].click().run()
+        self.at.button[0].click().run()
         self.assertEqual(self.at.session_state.current_page,
                          "embed")  # After click, move to embed page
         # pylint: enable=R0801
