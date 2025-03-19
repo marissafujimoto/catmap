@@ -1,7 +1,7 @@
-from pathlib import Path
-
+"""
+Module for the streamlit page showing the colon cancer data.
+"""
 import streamlit as st
-import pandas as pd
 from streamlit.delta_generator import DeltaGenerator
 
 from catmap.ui.component.embedding_plotter import EmbeddingPlotter
@@ -9,26 +9,46 @@ from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.abstract_component import AbstractUIComponent
 from catmap.ui.component.info_button import InfoButton
 from catmap.ui.component.return_home_button import ReturnHomeButton
-from catmap.ui.component.header import Header
+from catmap.ui.component.visualization_overview_expander import VisualizationOverviewExpander
+from catmap.ui.component.data_overview_expander import DataOverviewExpander
 
-class Page2(AbstractUIComponent):
+
+class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
+    """Class for displaying colon cancer embeddings and information."""
+
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """Sets up the components and initializes the state."""
-        Header.build(st)
-        col1, col2 = parent.columns([6, 2])
+        col1,col2,col3 = parent.columns([0.15,0.7,0.15])
 
         with col1:
-            select_column_dropdown = SelectColumnDropdown()
-            select_column_dropdown.build(parent)
+            st.write("")
 
         with col2:
-            info_button = InfoButton()
-            info_button.build(parent)
+            parent.title("Colon Cancer Catmap")
+            select_column_dropdown = SelectColumnDropdown(
+                st.session_state.column_options_colon, "selected_column_colon")
+            select_column_dropdown.build(parent)
 
-        embedding_plotter = EmbeddingPlotter()
-        embedding_plotter.build(parent)
-        with parent.expander("About this dashboard"):
-            st.write("This dashboard provides insights into catmap data.")
+            caption_text = st.session_state.colon_caption_dict[
+                st.session_state.selected_column_colon]
+            st.caption(caption_text)
 
-        home_button = ReturnHomeButton()
-        home_button.build(parent)
+            embedding_plotter = EmbeddingPlotter(
+                st.session_state.df_colon, st.session_state.selected_column_colon, "X", "Y")
+            embedding_plotter.build(parent)
+
+            vis_overview_expander = VisualizationOverviewExpander()
+            vis_overview_expander.build(parent)
+
+            data_overview_expander = DataOverviewExpander()
+            data_overview_expander.build(parent)
+
+            home_button = ReturnHomeButton()
+            home_button.build(parent)
+
+        with col3:
+            st.write("#")
+            st.write("#")
+            st.write("#")
+            colon_info_button = InfoButton()
+            colon_info_button.build(parent)

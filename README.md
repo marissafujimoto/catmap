@@ -1,7 +1,7 @@
 # `catmap`
 
 ![Build/Test Workflow](https://github.com/marissafujimoto/catmap/actions/workflows/build_test.yml/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/marissafujimoto/catmap/badge.svg?branch=setup-ci)](https://coveralls.io/github/marissafujimoto/catmap?branch=setup-ci)
+[![Coverage Status](https://coveralls.io/repos/github/marissafujimoto/catmap/badge.svg?branch=main)](https://coveralls.io/github/marissafujimoto/catmap?branch=main)
 
 A python based map of cancer transcriptomics. Written in python and currently in development.
 
@@ -39,24 +39,42 @@ https://www.nature.com/articles/s41597-023-02074-6
 
 https://singlecell.broadinstitute.org/single_cell/study/SCP1162/human-colon-cancer-atlas-c295
 
-## Usage Instructions
+## Installation Instructions
 
-To build catmap from source
+catmap is currently not available on package manager (e.g. PyPI). Instructions to build from source are below.
 
-Install dependencies (requires conda)
+First pull the git repository:
 
 ```
+git clone git@github.com:marissafujimoto/catmap.git
+```
+
+Within catmap folder, install dependencies (requires conda):
+
+```
+cd catmap
 conda env create -f environment.yml
+conda activate catmap_env
 ```
 
-Install catmap from source
+Install catmap from source. Run from the root catmap folder where `pyproject.toml` is:
 
 ```
 pip install .
 ```
 
-Launch catmap
+The install script adds a command line tool called `catmap` to your path. To launch catmap from any directory:
 
 ```
 catmap
 ```
+
+Follow the instructions prompted in the command line for any streamlit related setup. Then open one of the links (e.g. localhost).
+
+## Usage Instructions
+
+To see more detailed instructions on usage see [usage examples](examples/usage_examples.md).
+
+## Contact
+
+For any issues or questions, open an issue via [github issues](https://github.com/marissafujimoto/catmap/issues).

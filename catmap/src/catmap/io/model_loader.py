@@ -11,6 +11,7 @@ the interface for loading a model also will need the anndata at the same time.
 import os
 from pathlib import Path
 
+import pandas as pd
 import anndata
 import scanpy as sc
 import scvi
@@ -70,3 +71,49 @@ def load_rfc_cell_type_classifier() -> RandomForestClassifier:
         rfc (RandomForestClassifier): The random forest classifier object.
     """
     return joblib.load(CELL_TYPE_RFC_PATH)
+
+
+def embed_nsclc_data(adata_path: str) -> pd.DataFrame:
+    """
+    Calculates embedding vectors for a given adata. The adata should have the same genes as the
+    nsclc embedding model loaded from load_nsclc_embedding_model. Then calculates the predicted
+    cell types using a random forest classifier.
+
+    Args:
+        adata_path (str): The path to the adata file.
+
+    Returns:
+        embed_df (pd.DataFrame): A pandas dataframe containing the UMAP coordinates as columns
+        "UMAP1" and "UMAP2" and the predicted cell type in the "Predicted Cell Type" column.
+
+    Raises:
+        ValueError: If the path does not exist or is not a file.
+    """
+    if not os.path.isfile(adata_path):
+        raise ValueError(
+            f"Path for adata {adata_path} does not exist or is not a file")
+
+    adata = load_adata(adata_path)
+    scvi_model = load_nsclc_embedding_model(adata)
+    rfc = load_rfc_cell_type_classifier()
+
+    print("Getting Latent Representation")
+    latent = scvi_model.get_latent_representation(adata)
+
+    print("Predicting Cell Types")
+    predicted_cell_type = rfc.predict(latent)
+
+    print("Calculating UMAP")
+    adata.obsm["X_scVI"] = latent
+    sc.pp.neighbors(adata, n_neighbors=15, use_rep="X_scVI")
+    sc.tl.umap(adata)
+
+    print("Embedding Done")
+
+    embed_df = pd.DataFrame()
+
+    embed_df["UMAP1"] = adata.obsm["X_umap"][:, 0]
+    embed_df["UMAP2"] = adata.obsm["X_umap"][:, 1]
+    embed_df["Predicted Cell Type"] = predicted_cell_type
+
+    return embed_df
