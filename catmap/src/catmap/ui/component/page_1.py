@@ -10,11 +10,13 @@ from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.abstract_component import AbstractUIComponent
 from catmap.ui.component.info_button import InfoButton
 from catmap.ui.component.return_home_button import ReturnHomeButton
-
+from catmap.ui.component.header import Header
 
 class Page1(AbstractUIComponent):
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """Sets up the components and initializes the state."""
+        
+        Header().build(st)
         col1, col2 = parent.columns([6, 2])
 
         with col1:

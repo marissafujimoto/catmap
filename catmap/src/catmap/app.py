@@ -11,17 +11,20 @@ from catmap.ui.component.embedding_plotter import EmbeddingPlotter
 from catmap.ui.component.select_column_dropdown import SelectColumnDropdown
 from catmap.ui.component.page_1 import Page1
 from catmap.ui.component.page_2 import Page2
+from catmap.ui.component.homepage_header import HomePageHeader
 
 def start():
     """Sets up the components and initializes the state."""
     _initialize_state()
 
-    Header().build(st)
-
     if st.session_state.current_page == "home":
         # TODO extract to home page component
-        st.write("Navigate to other pages:")
-        col1, col2 = st.columns(2)
+        HomePageHeader().build(st)
+        
+        st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+        #st.write("Navigate to other pages:")
+
+        col1, col2 = st.columns([1,1])
 
         with col1:
             if st.button("Go to Page 1"):
@@ -32,6 +35,7 @@ def start():
             if st.button("Go to Page 2"):
                 st.session_state.current_page = "page_2"
                 st.rerun()
+        st.markdown("</div>", unsafe_allow_html=True) 
 
     elif st.session_state.current_page == "page_1":
         nsclc_page = Page1()
