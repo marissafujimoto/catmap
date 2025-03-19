@@ -21,36 +21,32 @@ def start():
     """Sets up the components and initializes the state."""
     _initialize_state()
 
-    #Header().build(st)
-
     if st.session_state.current_page == "home":
-        # TODO extract to home page component
+        # TODO extract to home page component # pylint: disable=fixme
         HomePageHeader().build(st)
-        
         st.markdown(
             """
             <div style='text-align: justify; text-align-last: center; width: 80%; margin: auto;'>
             <h4>
-            catmap stands for ca(ncer) t(ranscriptomics) map. It is a data visualization application and tool used to visualize and project single cell gene expression data from cancer cells.
+            catmap stands for ca(ncer) t(ranscriptomics) map. 
+            It is a data visualization application and tool used to visualize and 
+            project single cell gene expression data from cancer cells.
             </h4>
             </div>
             """,
             unsafe_allow_html=True
         )
-        
-        st.markdown("<h3 style='text-align: center;'>Navigate to catmaps with different visualizations:</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center;'>Navigate to catmaps with "
+        "different visualizations:</h3>", unsafe_allow_html=True)
 
-        
-
-        col4, col1, col2, col3 = st.columns([0.175, 0.325, 0.10, 0.40])
+        _, col1, _, col3 = st.columns([0.175, 0.325, 0.10, 0.40])
 
         with col1:
             if st.button("Non-Small-Cell-Lung Cancer"):
                 st.session_state.current_page = "page_1"
                 st.rerun()
-        
         with col3:
-            if st.button("Colon Cancer"):   
+            if st.button("Colon Cancer"):
                 st.session_state.current_page = "page_2"
                 st.rerun()
 
