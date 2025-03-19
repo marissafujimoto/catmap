@@ -110,7 +110,7 @@ class TestAppUI(unittest.TestCase):
         self.assertEqual(self.at.selectbox[0].options,
                          ["Patient", "Cluster Level 1", "Cluster Level 2",
                           "Cancer/Normal", "Stage", "Lymph Node Status", "MMR Status", "MMR MLH1"])
-        
+
     def test_dynamic_caption_page_1(self):
         """A user changes the filter option on page 1 and the caption below the filter changes."""
         self.at.button[0].click().run()  # move to page 1
@@ -121,7 +121,7 @@ class TestAppUI(unittest.TestCase):
         self.at.selectbox[0].set_value("Patient").run()  # select Stage as column
         self.assertEqual(
             self.at.caption[0].body, "Data is grouped by individual patients across all studies.")
-        
+
     def test_dynamic_caption_page_2(self):
         """A user changes the filter option on page 2 and the caption below the filter changes."""
         self.at.button[1].click().run()  # move to page 2
@@ -131,7 +131,8 @@ class TestAppUI(unittest.TestCase):
             self.at.caption[0].body, "Data is grouped by the stage of the cancer.")
         self.at.selectbox[0].set_value("Cluster Level 1").run()  # select Stage as column
         self.assertEqual(
-            self.at.caption[0].body, "Data is grouped by the high level cell type represented (7 total).")
+            self.at.caption[0].body, "Data is grouped by the high level "
+            "cell type represented (7 total).")
 
 
     def test_dynamic_info_button_page_one(self):
@@ -143,20 +144,25 @@ class TestAppUI(unittest.TestCase):
         self.at.button[1].click().run()
         # pylint: disable=line-too-long
         self.assertEqual(
-            self.at.info[0].value, "Double click on a Stage option in the plot legend to view data "
-            "for that Stage option only. Single click on a Stage option to remove its data from the plot.")
+            self.at.info[0].value, "Double click on a Stage option "
+            "in the plot legend to view data "
+            "for that Stage option only. Single click on a Stage "
+            "option to remove its data from the plot.")
         # pylint: enable=line-too-long
         self.at.button[1].click().run()
         self.at.selectbox[0].set_value("Patient").run()  # select Stage as column
         self.at.button[1].click().run()
         self.assertEqual(
-            self.at.info[0].value, "Double click on a Patient option in the plot legend to view data "
-            "for that Patient option only. Single click on a Patient option to remove its data from the plot.")
+            self.at.info[0].value, "Double click on a Patient option "
+            "in the plot legend to view data "
+            "for that Patient option only. Single click on a Patient "
+            "option to remove its data from the plot.")
         self.at.button[1].click().run()
         self.assertFalse(self.at.info)  # Info is not displayed
 
     def test_dynamic_info_button_page_two(self):
-        """A user changes filter selections which update the info button text on page 2."""
+        """A user changes filter selections which update the info 
+        button text on page 2."""
         self.at.button[1].click().run()
         self.assertEqual(self.at.session_state.current_page, "page_2")
         self.assertFalse(self.at.info)  # Info is not displayed
@@ -164,15 +170,19 @@ class TestAppUI(unittest.TestCase):
         self.at.button[1].click().run()
         # pylint: disable=line-too-long
         self.assertEqual(
-            self.at.info[0].value, "Double click on a Stage option in the plot legend to view data "
-            "for that Stage option only. Single click on a Stage option to remove its data from the plot.")
+            self.at.info[0].value, "Double click on a Stage option "
+            "in the plot legend to view data "
+            "for that Stage option only. Single click on a Stage "
+            "option to remove its data from the plot.")
         # pylint: enable=line-too-long
         self.at.button[1].click().run()
         self.at.selectbox[0].set_value("MMR MLH1").run()  # select Stage as column
         self.at.button[1].click().run()
         self.assertEqual(
-            self.at.info[0].value, "Double click on a MMR MLH1 option in the plot legend to view data "
-            "for that MMR MLH1 option only. Single click on a MMR MLH1 option to remove its data from the plot.")
+            self.at.info[0].value, "Double click on a MMR MLH1 "
+            "option in the plot legend to view data "
+            "for that MMR MLH1 option only. Single click on a "
+            "MMR MLH1 option to remove its data from the plot.")
         self.at.button[1].click().run()
         self.assertFalse(self.at.info)  # Info is not displayed
 

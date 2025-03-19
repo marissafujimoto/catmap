@@ -9,7 +9,7 @@ from pathlib import Path
 import streamlit as st
 import pandas as pd
 
-from catmap.ui.component.header import Header
+#from catmap.ui.component.header import Header
 from catmap.ui.component.page_1 import Page1
 from catmap.ui.component.page_2 import Page2
 
@@ -85,9 +85,12 @@ def _initialize_state():
         "Cluster Level 2": "Data is grouped by the low level cell type represented (20 total).", 
         "Cancer/Normal": "Data is grouped by classification of whether or not it is cancerous.",
         "Stage": "Data is grouped by the stage of the cancer.",
-        "Lymph Node Status": "Data is grouped by classification of whether or not cancer is found in lymph nodes (N- = no, N+ = yes)",
-        "MMR Status": "Data is group by MMR (mismatch repair) status (pMMR = MMR-proficient, dMMR = MMR-deficient, normal = non-cancerous)",
-        "MMR MLH1": "Data is grouped by MLH1 status (a gene that encodes a protein involved in MMR)"}
+        "Lymph Node Status": "Data is grouped by classification of whether or not cancer is found "
+        "in lymph nodes (N- = no, N+ = yes)",
+        "MMR Status": "Data is group by MMR (mismatch repair) status (pMMR = MMR-proficient, "
+        "dMMR = MMR-deficient, normal = non-cancerous)",
+        "MMR MLH1": "Data is grouped by MLH1 status (a gene that encodes a protein involved in "
+        "MMR)"}
 
     if 'button' not in st.session_state:
         st.session_state.button = False

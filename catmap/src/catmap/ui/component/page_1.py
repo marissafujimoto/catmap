@@ -20,6 +20,9 @@ class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
         """Sets up the components and initializes the state."""
         col1,col2,col3 = parent.columns([0.15,0.7,0.15])
 
+        with col1:
+            st.write("")
+
         with col2:
             parent.title("Non-Small-Cell-Lung Cancer Catmap")
 
@@ -27,7 +30,8 @@ class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
                 st.session_state.column_options_nsclc, "selected_column_nsclc")
             select_column_dropdown.build(parent)
 
-            caption_text = st.session_state.nsclc_caption_dict[st.session_state.selected_column_nsclc]
+            caption_text = st.session_state.nsclc_caption_dict[
+                st.session_state.selected_column_nsclc]
             st.caption(caption_text)
 
             embedding_plotter = EmbeddingPlotter(

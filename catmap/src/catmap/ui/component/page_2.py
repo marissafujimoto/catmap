@@ -19,13 +19,18 @@ class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """Sets up the components and initializes the state."""
         col1,col2,col3 = parent.columns([0.15,0.7,0.15])
+
+        with col1:
+            st.write("")
+
         with col2:
             parent.title("Colon Cancer Catmap")
             select_column_dropdown = SelectColumnDropdown(
                 st.session_state.column_options_colon, "selected_column_colon")
             select_column_dropdown.build(parent)
-            
-            caption_text = st.session_state.colon_caption_dict[st.session_state.selected_column_colon]
+
+            caption_text = st.session_state.colon_caption_dict[
+                st.session_state.selected_column_colon]
             st.caption(caption_text)
 
             embedding_plotter = EmbeddingPlotter(
@@ -34,7 +39,7 @@ class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
 
             vis_overview_expander = VisualizationOverviewExpander()
             vis_overview_expander.build(parent)
-            
+
             data_overview_expander = DataOverviewExpander()
             data_overview_expander.build(parent)
 

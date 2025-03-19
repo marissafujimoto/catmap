@@ -17,6 +17,14 @@ class InfoButton(AbstractUIComponent): # pylint: disable=too-few-public-methods
         parent.button(":information_source:", on_click=self.toggle_button_state)
         if st.session_state.button:
             if st.session_state.current_page == "page_1":
-                st.info(f"Double click on a {st.session_state.selected_column_nsclc} option in the plot legend to view data for that {st.session_state.selected_column_nsclc} option only. Single click on a {st.session_state.selected_column_nsclc} option to remove its data from the plot.")
+                st.info(f"Double click on a {st.session_state.selected_column_nsclc} option "
+                        "in the plot legend to view data for that "
+                        "{st.session_state.selected_column_nsclc} option only. Single "
+                        "click on a {st.session_state.selected_column_nsclc} option to "
+                        "remove its data from the plot.")
             if st.session_state.current_page == "page_2":
-                st.info(f"Double click on a {st.session_state.selected_column_colon} option in the plot legend to view data for that {st.session_state.selected_column_colon} option only. Single click on a {st.session_state.selected_column_colon} option to remove its data from the plot.")
+                st.info(f"Double click on a {st.session_state.selected_column_colon} option "
+                        "in the plot legend to view data for that "
+                        "{st.session_state.selected_column_colon} option only. Single click on "
+                        "a {st.session_state.selected_column_colon} option to remove its data "
+                        "from the plot.")
