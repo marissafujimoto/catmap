@@ -10,6 +10,7 @@ from catmap.ui.component.abstract_component import AbstractUIComponent
 from catmap.ui.component.info_button import InfoButton
 from catmap.ui.component.return_home_button import ReturnHomeButton
 from catmap.ui.component.visualization_overview_expander import VisualizationOverviewExpander
+from catmap.ui.component.data_overview_expander import DataOverviewExpander
 
 
 class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
@@ -23,8 +24,10 @@ class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
             select_column_dropdown = SelectColumnDropdown(
                 st.session_state.column_options_colon, "selected_column_colon")
             select_column_dropdown.build(parent)
+            
             caption_text = st.session_state.colon_caption_dict[st.session_state.selected_column_colon]
             st.caption(caption_text)
+
             embedding_plotter = EmbeddingPlotter(
                 st.session_state.df_colon, st.session_state.selected_column_colon, "X", "Y")
             embedding_plotter.build(parent)
@@ -32,9 +35,8 @@ class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
             vis_overview_expander = VisualizationOverviewExpander()
             vis_overview_expander.build(parent)
             
-            with parent.expander("Data Overview"):
-                # TODO: write a more informative summary of the data
-                parent.write("Add info from Erik.")
+            data_overview_expander = DataOverviewExpander()
+            data_overview_expander.build(parent)
 
             home_button = ReturnHomeButton()
             home_button.build(parent)
