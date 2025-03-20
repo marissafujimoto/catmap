@@ -138,11 +138,19 @@ We assume that the pages correctly implement their build function and manage the
 * Launcher - A component which launches the streamlit app.
 
 # Interactions
+
+## Embed Flow
 This diagram shows the flow for how the column selection and filtering toggles would change the visualization for the use case of visualizing cancer data.
+
 ![Applying filter sequence diagram](./assets/filter-flow.png  "Filter sequence diagram")
 
+## Visualize / Change Filters Flow
 This diagram shows how new data would be embedded for both the use case of a doctor embedding patient data and the patient viewing that data with their doctor.
+
 ![Uploading sample sequence diagram](./assets/upload-flow.png  "Upload sequence diagram")
 
+## Maintainer Flow
 This diagram shows at a high level what components are needed to maintian and extend the app for the maintainer use case.
-![Maintenance sequence diagram](./assets/maintainer-flow.png  "Maintainer sequence diagram")
+
+TODO add this picture
+<!-- ![Maintenance sequence diagram](./assets/maintainer-flow.png  "Maintainer sequence diagram") -->
