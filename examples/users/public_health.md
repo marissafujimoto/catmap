@@ -1,6 +1,6 @@
 # Public Health Official
-Click the links below to learn more about how to use the catmap application for each of the individual use cases applicable to your role. 
+Click the link below to learn more about how to use the catmap application for each of the individual use cases applicable to your role. 
 
-[Visualizing Cancer Datasets](use_cases/visualizing_cancer_datasets.md) 
+As a public health official we do not expect you to have access to individual patient data to embed into the model, so we only provide information on how to use and interpret the baseline catmap models that we have provided within our application. Please go to the link below to learn more.
 
-[Interpreting Visualizations](use_cases/interpreting_visualizations.md) 
+[Visualizing and Interpreting Cancer Datasets](use_cases/visualizing_and_interpreting_cancer_datasets.md.md.md) 
