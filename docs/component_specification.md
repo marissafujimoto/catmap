@@ -150,7 +150,6 @@ This diagram shows how new data would be embedded for both the use case of a doc
 ![Uploading sample sequence diagram](./assets/upload-flow.png  "Upload sequence diagram")
 
 ## Maintainer Flow
-This diagram shows at a high level what components are needed to maintian and extend the app for the maintainer use case.
+This diagram shows at a high level what steps are needed to maintian and extend the app for the maintainer use case.
 
-TODO add this picture
-<!-- ![Maintenance sequence diagram](./assets/maintainer-flow.png  "Maintainer sequence diagram") -->
+![Maintenance sequence diagram](./assets/maintainer-flow.png  "Maintainer sequence diagram")
