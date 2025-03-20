@@ -1,10 +1,10 @@
 # Embedding New Patient Data
 
-Catmap can be used to embed transcriptomic data collected from Non-Small-Cell-Lung Cancer (NSCLC) patients. Catmap has limited ability to preprocess new patient data. We recommend using (seurat)[https://satijalab.org/seurat/] to preprocess your data. Ultimately it will need to be processed in the following fashion:
+Catmap can be used to embed transcriptomic data collected from Non-Small-Cell-Lung Cancer (NSCLC) patients. Catmap has limited ability to preprocess new patient data. We recommend using [seurat](https://satijalab.org/seurat/) to preprocess your data. Ultimately it will need to be processed in the following fashion:
 
-1. Select for the 2000 genes catmap is trained on. These genes can be loaded from the variable names of the adata_test.h5ad available in the 'catmap/tests/data/' subdirectory. Export a h5ad / anndata file with the X as the raw gene counts for these genes.
+1. Select for the 2000 genes catmap is trained on. These genes can be loaded from the variable names of the adata_test.h5ad available in the `catmap/tests/data/` subdirectory. Export a h5ad / anndata file with the X as the raw gene counts for these genes.
 
-2. Then in the catmap UI go to the NSCLC page and click Embed New Data and follow the prompts to upload your patient data. You can use the data available in 'catmap/tests/data' to test this. The results should appear as below.
+2. Then in the catmap UI go to the NSCLC page and click Embed New Data and follow the prompts to upload your patient data. You can use the data available in `catmap/tests/data` to test this. The results should appear as below.
 
 See the section on "Interacting with Catmaps" to find how to get the to "Embed New Data" option. Here is a screenshot of its location on the NSCLC page:
 
