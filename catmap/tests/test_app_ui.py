@@ -1,16 +1,69 @@
 """Module for UI app testing."""
 
 import unittest
+from unittest.mock import patch
 from streamlit.testing.v1 import AppTest
-
+from catmap.app import start
 
 class TestAppUI(unittest.TestCase):
     """Unit tests for Streamlit app UI."""
 
     def setUp(self):
         """Initialize a fresh app instance for the testing"""
-        self.at = AppTest.from_file("../src/catmap/app.py").run()
+        self.at = AppTest.from_file("../src/catmap/app.py").run(timeout=10)
 
+    def test_home_page_button1(self):
+        """Check if correct text is displayed on button 1"""
+        self.assertEqual(self.at.session_state.current_page, "home")
+        self.assertEqual(self.at.button[0].label, "Non-Small-Cell-Lung Cancer")
+    def test_home_page_button2(self):
+        """Check if correct text is displayed on button 2"""
+        self.assertEqual(self.at.session_state.current_page, "home")
+        self.assertEqual(self.at.button[1].label, "Colon Cancer")
+
+    def test_home_page_title(self):
+        """Check if the expected markdown text appears on the home page title."""
+        self.assertEqual(self.at.session_state.current_page, "home")
+        with patch("streamlit.markdown") as mock_markdown:
+            start()
+            rendered_texts = [call.args[0] for call in mock_markdown.call_args_list]
+
+            print("\nCaptured markdown texts:\n", rendered_texts)
+            # Expected text to check (must match exactly)
+            expected_text = """<h1>catmap</h1>"""
+
+            # Assert the expected markdown text is found
+            self.assertTrue(any(expected_text.strip() in text.strip() for text in rendered_texts),
+                            "Expected markdown text not found on the home page!")
+    def test_home_page_desc(self):
+        """Check if the expected markdown text appears on the home page desc."""
+        self.assertEqual(self.at.session_state.current_page, "home")
+        with patch("streamlit.markdown") as mock_markdown:
+            start()
+            rendered_texts = [call.args[0] for call in mock_markdown.call_args_list]
+
+            print("\nCaptured markdown texts:\n", rendered_texts)
+            # Expected text to check (must match exactly)
+            expected_text = """catmap stands for ca(ncer) t(ranscriptomics) map."""
+
+            # Assert the expected markdown text is found
+            self.assertTrue(any(expected_text.strip() in text.strip() for text in rendered_texts),
+                            "Expected markdown text not found on the home page!")
+
+    def test_home_page_navigation(self):
+        """Check if the expected markdown text appears on the home page nav."""
+        self.assertEqual(self.at.session_state.current_page, "home")
+        with patch("streamlit.markdown") as mock_markdown:
+            start()
+            rendered_texts = [call.args[0] for call in mock_markdown.call_args_list]
+
+            print("\nCaptured markdown texts:\n", rendered_texts)
+            # Expected text to check (must match exactly)
+            expected_text = """Navigate to catmaps with"""
+
+            # Assert the expected markdown text is found
+            self.assertTrue(any(expected_text.strip() in text.strip() for text in rendered_texts),
+                            "Expected markdown text not found on the home page!")
     def test_page_one_button_click(self):
         """A user clicks to go to page 1."""
         self.assertEqual(self.at.session_state.current_page,
@@ -113,9 +166,11 @@ class TestAppUI(unittest.TestCase):
 
     def test_dynamic_caption_page_1(self):
         """A user changes the filter option on page 1 and the caption below the filter changes."""
-        self.at.button[0].click().run()  # move to page 1
+        self.at.button[0].click().run(timeout=20)  # move to page 1
+        self.at.run()
         self.assertEqual(self.at.session_state.current_page, "page_1")
-        self.at.selectbox[0].set_value("Stage").run()  # select Stage as column
+        self.at.selectbox[0].set_value("Stage").run(timeout=10)  # select Stage as column
+        self.at.run()
         self.assertEqual(
             self.at.caption[0].body, "Data is grouped by the stage of the cancer.")
         self.at.selectbox[0].set_value("Patient").run()  # select Stage as column

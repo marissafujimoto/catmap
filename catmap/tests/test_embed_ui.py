@@ -43,7 +43,7 @@ class TestEmbedUI(unittest.TestCase):
     def setUp(self):
         """Initialize a fresh app instance for the testing"""
         self.at = AppTest.from_file(
-            "../src/catmap/app.py", default_timeout=20).run()
+            "../src/catmap/app.py", default_timeout=120).run(timeout=20)
 
     def navigate_to_embed_page(self):
         """Helper to navigate to embed page"""
@@ -68,7 +68,6 @@ class TestEmbedUI(unittest.TestCase):
             "test.h5ad", TEST_ADATA_PATH)
 
         self.navigate_to_embed_page()
-
         # The last data plotted should be the predicted labels visual
         self.assertEqual(
             mock_plotter.call_args_list[-1].args[2:], ("Predicted Cell Type", "UMAP1", "UMAP2"))

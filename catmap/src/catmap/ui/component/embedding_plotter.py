@@ -1,5 +1,6 @@
 """Module to fill the embedding plotter window."""
 import plotly.express as px
+import streamlit as st
 
 from streamlit.delta_generator import DeltaGenerator
 
@@ -34,6 +35,9 @@ class EmbeddingPlotter(AbstractUIComponent):  # pylint: disable=too-few-public-m
                          category_orders={"Stage": ["I", "II", "III", "III/IV", "IV"]},
                          opacity=0.7)
         fig.update_layout(legend= {'itemsizing': 'constant'})
-        fig.update_traces(marker=dict(size=1))
+        if st.session_state.current_page == "embed":
+            fig.update_traces(marker=dict(size=10))
+        else:
+            fig.update_traces(marker=dict(size=1))
         fig.update_layout(width=800, height=800)
         parent.plotly_chart(fig)
