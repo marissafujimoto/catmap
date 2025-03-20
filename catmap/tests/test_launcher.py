@@ -16,4 +16,3 @@ class TestLauncher(unittest.TestCase):
         launcher.main()
 
         mock_main_run.assert_called_with([str(Path(app.__file__).resolve())])
-
