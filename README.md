@@ -39,9 +39,13 @@ https://www.nature.com/articles/s41597-023-02074-6
 
 https://singlecell.broadinstitute.org/single_cell/study/SCP1162/human-colon-cancer-atlas-c295
 
+## Machine Learning Methods
+
+We are using a mix of [scvi](https://scvi-tools.org/), [seurat](https://satijalab.org/seurat/), and custom scripts to preprocess our data and train our models. We used [colab](https://colab.research.google.com/) as the environment to train our models. These notebooks and other notes about our data engineering are available in the `notebooks` directory.
+
 ## Installation Instructions
 
-catmap is currently not available on package manager (e.g. PyPI). Instructions to build from source are below.
+catmap is currently not available via a package manager (e.g. PyPI). Instructions to build from source are provided below.
 
 First pull the git repository:
 
