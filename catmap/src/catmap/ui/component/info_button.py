@@ -5,16 +5,23 @@ from streamlit.delta_generator import DeltaGenerator
 from catmap.ui.component.abstract_component import AbstractUIComponent
 
 
-class InfoButton(AbstractUIComponent): # pylint: disable=too-few-public-methods
+class InfoButton(AbstractUIComponent):  # pylint: disable=too-few-public-methods
     """Class to create info button."""
 
     def toggle_button_state(self):
         """Helper function to toggle the state of the button"""
         st.session_state.button = not st.session_state.button
 
-    def build(self, parent: DeltaGenerator) -> DeltaGenerator:
-        """Creates the info button."""
-        parent.button(":information_source:", on_click=self.toggle_button_state)
+    def build(self, parent: DeltaGenerator):
+        """
+        Creates the info button.
+
+        Args:
+            parent (DeltaGenerator): The parent streamlit container to attach to.
+            Could be a column or the root st object.
+        """
+        parent.button(":information_source:",
+                      on_click=self.toggle_button_state)
         if st.session_state.button:
             if st.session_state.current_page == "page_1":
                 st.info(f"Double click on a {st.session_state.selected_column_nsclc} option "
