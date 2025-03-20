@@ -24,7 +24,7 @@ If we select Cell_Cluster_level1, we see that the catmap updates as follows:
 
 ![image](screenshots/new_filter_selection.png)
 
-There is also an info button on the far right that provides more information about how to iteract with the visualization:
+There is also an info button on the far right that provides more information about how to interact with the visualization:
 
 ![image](screenshots/info_button.png)
 
