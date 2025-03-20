@@ -14,7 +14,9 @@ class InfoButton(AbstractUIComponent):  # pylint: disable=too-few-public-methods
 
     def build(self, parent: DeltaGenerator):
         """
-        Creates the info button.
+        Creates the info button. Relies on session_state.button and session_state.current_page to
+        change what information to display and draws from the column option for both pages to
+        dynamically display an informative help tip.
 
         Args:
             parent (DeltaGenerator): The parent streamlit container to attach to.

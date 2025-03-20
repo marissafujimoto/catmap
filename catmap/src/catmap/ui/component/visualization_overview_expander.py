@@ -10,7 +10,8 @@ class VisualizationOverviewExpander(AbstractUIComponent):  # pylint: disable=too
 
     def build(self, parent: DeltaGenerator):
         """
-        Creates the visualization overview expander.
+        Creates the visualization overview expander. Dynamically adjusts content based on
+        session_state.current_page.
 
         Args:
             parent (DeltaGenerator): The parent streamlit container to attach to.

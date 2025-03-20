@@ -18,7 +18,9 @@ class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
 
     def build(self, parent: DeltaGenerator):
         """
-        Sets up the components and initializes the state for the colon cancer page.
+        Sets up the components and initializes the state for the colon cancer page. Relies on
+        colon cancer related session state including the selected column, dataframe, and column
+        options.
 
         Args:
             parent (DeltaGenerator): The parent streamlit container to attach to.

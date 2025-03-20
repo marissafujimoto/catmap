@@ -19,7 +19,8 @@ class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
 
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
         """
-        Sets up the components and initializes the state for the NSCLC page.
+        Sets up the components and initializes the state for the NSCLC page. Relies on NSCLC
+        related session state including the selected column, dataframe, and column options.
 
         Args:
             parent (DeltaGenerator): The parent streamlit container to attach to.

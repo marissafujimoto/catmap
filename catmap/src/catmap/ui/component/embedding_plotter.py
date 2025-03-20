@@ -30,7 +30,8 @@ class EmbeddingPlotter(AbstractUIComponent):  # pylint: disable=too-few-public-m
 
     def build(self, parent: DeltaGenerator):
         """
-        Builds the component which plots the embedding data.
+        Builds the component which plots the embedding data. Also relies on
+        session_state.current_page to adjust the size of the markers for the embed page.
 
         Args:
             parent (DeltaGenerator): The parent streamlit container to attach to.

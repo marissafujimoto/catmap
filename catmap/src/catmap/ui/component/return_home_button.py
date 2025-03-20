@@ -10,7 +10,7 @@ class ReturnHomeButton(AbstractUIComponent):  # pylint: disable=too-few-public-m
 
     def build(self, parent: DeltaGenerator):
         """
-        Creates the back to home button.
+        Creates the back to home button which sets the session_state current to "home".
 
         Args:
             parent (DeltaGenerator): The parent streamlit container to attach to.
