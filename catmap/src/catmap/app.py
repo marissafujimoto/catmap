@@ -13,6 +13,8 @@ import pandas as pd
 from catmap.ui.component.page_1 import Page1
 from catmap.ui.component.page_2 import Page2
 from catmap.ui.component.embed_results_page import EmbedResultsPage
+from catmap.ui.component.homepage_header import HomePageHeader
+
 
 
 def start():
@@ -22,17 +24,31 @@ def start():
     # Header().build(st)
 
     if st.session_state.current_page == "home":
-        # TODO extract to home page component
-        st.write("Navigate to other pages:")
-        col1, col2 = st.columns(2)
+        # TODO extract to home page component # pylint: disable=fixme
+        HomePageHeader().build(st)
+        st.markdown(
+            """
+            <div style='text-align: justify; text-align-last: center; width: 80%; margin: auto;'>
+            <h4>
+            catmap stands for ca(ncer) t(ranscriptomics) map. 
+            It is a data visualization application and tool used to visualize and 
+            project single cell gene expression data from cancer cells.
+            </h4>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        st.markdown("<h3 style='text-align: center;'>Navigate to catmaps with "
+        "different visualizations:</h3>", unsafe_allow_html=True)
+
+        _, col1, _, col3 = st.columns([0.175, 0.325, 0.10, 0.40])
 
         with col1:
-            if st.button("Go to Page 1"):
+            if st.button("Non-Small-Cell-Lung Cancer"):
                 st.session_state.current_page = "page_1"
                 st.rerun()
-
-        with col2:
-            if st.button("Go to Page 2"):
+        with col3:
+            if st.button("Colon Cancer"):
                 st.session_state.current_page = "page_2"
                 st.rerun()
 
