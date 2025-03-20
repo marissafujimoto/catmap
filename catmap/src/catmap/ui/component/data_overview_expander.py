@@ -15,8 +15,8 @@ class DataOverviewExpander(AbstractUIComponent):  # pylint: disable=too-few-publ
                 parent.markdown(
                     "Study: The study that collected the sample of cells.\n \n"
                     "Patient: The patient the sample is from. \n \n"
-                    "Cluster Level 1: Groups the data into high level type of cell (9 total)\n \n"
-                    "Cluster Level 2: Groups the data into more specific cell types (27 total)\n \n"
+                    "Cluster Level 1: The high level type of cell (9 total)\n \n"
+                    "Cluster Level 2: More specific cell types (27 total)\n \n"
                     "Stage: The stage of Cancer. Stage I is a small tumor that hasn't spread. "
                     "Stage II is cancer that has grown into nearby tissue. "
                     "Stage III is cancer that has spread to lymph nodes. "
@@ -27,9 +27,9 @@ class DataOverviewExpander(AbstractUIComponent):  # pylint: disable=too-few-publ
             with parent.expander("Data Overview"):
                 parent.markdown(
                     "Patient: groups the data by individual patients across all studies.\n \n"
-                    "Cluster Level 1: Groups the data into high level type of cell (7 total)\n \n"
-                    "Cluster Level 2: Groups the data into more specific cell types (20 total)\n \n"
-                    "Cancer/Normal: g=Groups the data into cancer cells and normal cells.\n \n"
+                    "Cluster Level 1: The high level type of cell (7 total)\n \n"
+                    "Cluster Level 2: More specific cell types (20 total)\n \n"
+                    "Cancer/Normal: Whether the cell is cancerous or normal.\n \n"
                     "Stage: Whether the cancer is stage 4, the most advanced stage of cancer, or not.\n \n"
                     "Lymph Node Status: Whether or not at least one of the surrounding lymph nodes contain "
                     "cancer cells (N+ for yes, N- for no). This signifies the cancer cells are capable of "
