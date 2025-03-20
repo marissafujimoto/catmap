@@ -21,7 +21,7 @@ class DataOverviewExpander(AbstractUIComponent):  # pylint: disable=too-few-publ
                     "Stage II is cancer that has grown into nearby tissue. "
                     "Stage III is cancer that has spread to lymph nodes. "
                     "Stage IV is cancer that has spread to distant parts of the body.\n \n"
-                    "https://www.nature.com/articles/s41597-023-02074-6"
+                    "https://www.nature.com/articles/s41597-023-02074-6 \n \n"
                 )
 
         if st.session_state.current_page == "page_2":
@@ -44,5 +44,5 @@ class DataOverviewExpander(AbstractUIComponent):  # pylint: disable=too-few-publ
                     "methylated, the gene is turned off. When it is not methylated, this signifies that a change in "
                     "the DNA code is the reason for mismatch repair deficient cells. This will change the "
                     "treatment plan for the patient.\n \n"
-                    "https://singlecell.broadinstitute.org/single_cell/study/SCP1162/human-colon-cancer-atlas-c295"
+                    "https://singlecell.broadinstitute.org/single_cell/study/SCP1162/human-colon-cancer-atlas-c295 \n \n"
                 )
