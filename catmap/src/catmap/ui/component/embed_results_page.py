@@ -14,7 +14,7 @@ from catmap.io.model_loader import embed_nsclc_data
 class EmbedResultsPage(AbstractUIComponent):
     def build(self, parent: DeltaGenerator):
         """
-        Builds the embed results component
+        Builds the embed results component. Does not rely on session_state.
 
         Args:
             parent (DeltaGenerator): The parent container to build onto.

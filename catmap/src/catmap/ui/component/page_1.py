@@ -18,8 +18,15 @@ class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
     """Class for displaying NSCLC embeddings and information."""
 
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
-        """Sets up the components and initializes the state."""
-        col1,col2,col3 = parent.columns([0.15,0.7,0.15])
+        """
+        Sets up the components and initializes the state for the NSCLC page. Relies on NSCLC
+        related session state including the selected column, dataframe, and column options.
+
+        Args:
+            parent (DeltaGenerator): The parent streamlit container to attach to.
+            Could be a column or the root st object.
+        """
+        col1, col2, col3 = parent.columns([0.15, 0.7, 0.15])
 
         with col1:
             st.write("")
@@ -44,7 +51,7 @@ class Page1(AbstractUIComponent):  # pylint: disable=too-few-public-methods
 
             data_overview_expander = DataOverviewExpander()
             data_overview_expander.build(parent)
-        
+
             open_embedding_page_button = OpenEmbeddingPageButton()
             open_embedding_page_button.build(parent)
 

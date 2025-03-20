@@ -5,11 +5,18 @@ from streamlit.delta_generator import DeltaGenerator
 from catmap.ui.component.abstract_component import AbstractUIComponent
 
 
-class VisualizationOverviewExpander(AbstractUIComponent): # pylint: disable=too-few-public-methods
+class VisualizationOverviewExpander(AbstractUIComponent):  # pylint: disable=too-few-public-methods
     """Class to create visualization overview expander."""
 
-    def build(self, parent: DeltaGenerator) -> DeltaGenerator:
-        """Creates the visualization overview expander."""
+    def build(self, parent: DeltaGenerator):
+        """
+        Creates the visualization overview expander. Dynamically adjusts content based on
+        session_state.current_page.
+
+        Args:
+            parent (DeltaGenerator): The parent streamlit container to attach to.
+            Could be a column or the root st object.
+        """
         with parent.expander("Visualization Overview"):
             if st.session_state.current_page == "page_1":
                 st.markdown("""
@@ -23,7 +30,7 @@ class VisualizationOverviewExpander(AbstractUIComponent): # pylint: disable=too-
                     Interact with the filter dropdown above the plot to view the catmap with different 
                             groupings based on variables available in the data. 
                     """
-                )
+                            )
             if st.session_state.current_page == "page_2":
                 st.markdown("""
                     catmap stands for ca(ncer) t(ranscriptomics) map. It is a tool used to 
@@ -36,4 +43,4 @@ class VisualizationOverviewExpander(AbstractUIComponent): # pylint: disable=too-
                     Interact with the filter dropdown above the plot to view the catmap with different 
                             groupings based on variables available in the data. 
                     """
-                )
+                            )

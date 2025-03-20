@@ -1,4 +1,9 @@
-"""Base module for UI component."""
+"""
+Base module for UI component.
+
+This holds an abstract class which defines a single method "build" which is used to describe how
+the concrete component is built onto it's parent streamlit container.
+"""
 from abc import ABC, abstractmethod
 
 from streamlit.delta_generator import DeltaGenerator

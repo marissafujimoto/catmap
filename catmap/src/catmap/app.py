@@ -16,9 +16,11 @@ from catmap.ui.component.embed_results_page import EmbedResultsPage
 from catmap.ui.component.homepage_header import HomePageHeader
 
 
-
 def start():
-    """Sets up the components and initializes the state."""
+    """
+    Sets up the page components and initializes the state. Also create buttons which can set the
+    session_state.current_page to the desired page.
+    """
     _initialize_state()
 
     # Header().build(st)
@@ -39,7 +41,7 @@ def start():
             unsafe_allow_html=True
         )
         st.markdown("<h3 style='text-align: center;'>Navigate to catmaps with "
-        "different visualizations:</h3>", unsafe_allow_html=True)
+                    "different visualizations:</h3>", unsafe_allow_html=True)
 
         _, col1, _, col3 = st.columns([0.175, 0.325, 0.10, 0.40])
 

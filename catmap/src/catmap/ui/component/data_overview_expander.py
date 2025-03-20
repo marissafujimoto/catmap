@@ -9,7 +9,14 @@ class DataOverviewExpander(AbstractUIComponent):  # pylint: disable=too-few-publ
     """Class to create visualization overview expander."""
 
     def build(self, parent: DeltaGenerator) -> DeltaGenerator:
-        """Creates the visualization overview expander."""
+        """
+        Creates the visualization overview expander. Reacts to session_state.current_page to
+        choose which data to display.
+
+        Args:
+            parent (DeltaGenerator): The parent streamlit container to attach to.
+            Could be a column or the root st object.
+        """
         if st.session_state.current_page == "page_1":
             with parent.expander("Data Overview"):
                 parent.markdown(

@@ -16,9 +16,17 @@ from catmap.ui.component.data_overview_expander import DataOverviewExpander
 class Page2(AbstractUIComponent):  # pylint: disable=too-few-public-methods
     """Class for displaying colon cancer embeddings and information."""
 
-    def build(self, parent: DeltaGenerator) -> DeltaGenerator:
-        """Sets up the components and initializes the state."""
-        col1,col2,col3 = parent.columns([0.15,0.7,0.15])
+    def build(self, parent: DeltaGenerator):
+        """
+        Sets up the components and initializes the state for the colon cancer page. Relies on
+        colon cancer related session state including the selected column, dataframe, and column
+        options.
+
+        Args:
+            parent (DeltaGenerator): The parent streamlit container to attach to.
+            Could be a column or the root st object.
+        """
+        col1, col2, col3 = parent.columns([0.15, 0.7, 0.15])
 
         with col1:
             st.write("")

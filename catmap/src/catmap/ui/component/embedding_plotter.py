@@ -28,13 +28,21 @@ class EmbeddingPlotter(AbstractUIComponent):  # pylint: disable=too-few-public-m
         self.xlab = xlab
         self.ylab = ylab
 
-    def build(self, parent: DeltaGenerator) -> DeltaGenerator:
-        """Builds the component which plots the embedding data."""
+    def build(self, parent: DeltaGenerator):
+        """
+        Builds the component which plots the embedding data. Also relies on
+        session_state.current_page to adjust the size of the markers for the embed page.
+
+        Args:
+            parent (DeltaGenerator): The parent streamlit container to attach to.
+            Could be a column or the root st object.
+        """
         fig = px.scatter(self.df, x=self.xlab,
                          y=self.ylab, color=self.column,
-                         category_orders={"Stage": ["I", "II", "III", "III/IV", "IV"]},
+                         category_orders={
+                             "Stage": ["I", "II", "III", "III/IV", "IV"]},
                          opacity=0.7)
-        fig.update_layout(legend= {'itemsizing': 'constant'})
+        fig.update_layout(legend={'itemsizing': 'constant'})
         if st.session_state.current_page == "embed":
             fig.update_traces(marker=dict(size=10))
         else:
